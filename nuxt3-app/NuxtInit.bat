@@ -1,0 +1,2 @@
+@echo off
+npm install & npm install sass --save-dev & npm install vite-plugin-vuetify & npm install firebase & npm install firebase-admin --save &  npm install -D @fortawesome/fontawesome-svg-core @fortawesome/vue-fontawesome@prerelease @fortawesome/free-solid-svg-icons
