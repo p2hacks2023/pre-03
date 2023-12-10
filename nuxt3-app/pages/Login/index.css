@@ -1,0 +1,11 @@
+input {
+    padding: 10spx 10px;
+    border: 1px solid black;
+    margin: 5px;
+}
+
+button {
+    background-color: rgb(171, 171, 171);
+    padding: 5px 20px;
+    margin: 5px;
+}
