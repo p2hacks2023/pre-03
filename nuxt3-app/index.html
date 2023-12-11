@@ -1,37 +1,18 @@
 <!doctype html>
-<!--
- @license
- Copyright 2019 Google LLC. All Rights Reserved.
- SPDX-License-Identifier: Apache-2.0
--->
 <html>
 
 <head>
     <title>Simple Click Events</title>
-    <!-- jsFiddle will insert css and js -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 
 <body>
     <div id="map"></div>
-    <ul>
-        <li>lat: <span id="lat"></span></li>
-        <li>lng: <span id="lng"></span></li>
-    </ul>
 
-    <!-- 
-      The `defer` attribute causes the callback to execute after the full HTML
-      document has been parsed. For non-blocking uses, avoiding race conditions,
-      and consistent behavior across browsers, consider loading using Promises.
-      See https://developers.google.com/maps/documentation/javascript/load-maps-js-api
-      for more information.
-      -->
     <style>
         #map {
-            height: 80%;
+            height: 100%;
         }
-        /* 
- * Optional: Makes the sample page fill the window. 
- */
         
         html,
         body {
@@ -41,58 +22,63 @@
         }
     </style>
     <script>
-        /**
-         * @license
-         * Copyright 2019 Google LLC. All Rights Reserved.
-         * SPDX-License-Identifier: Apache-2.0
-         */
         function initMap() {
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 13,
-                center: {
-                    lat: 41.79697589896441,
-                    lng: 140.75675010681152
-                }
-            });
-            // クリックイベントを追加
-            map.addListener('click', function(e) {
-                getClickLatLng(e.latLng, map);
+            navigator.geolocation.getCurrentPosition(success, fail);
+        }
+
+        function success(pos) {
+            let coords = pos.coords;
+
+            let latlng = {
+                lat: coords.latitude,
+                lng: coords.longitude
+            }
+            console.log(latlng);
+            googleMapSetting(latlng);
+        }
+
+        function fail(error) {
+            let latlng = {
+                lat: 41.79682548737213,
+                lng: 140.75686774549635
+            }
+            console.log(latlng);
+            googleMapSetting(latlng);
+        }
+
+        function googleMapSetting(latlng) {
+            const mapElm = document.getElementById("map");
+            const map = new google.maps.Map(mapElm, {
+                zoom: 15,
+                center: latlng,
             });
 
-            // map.addListener("center_changed", () => {
-            //     // 3 seconds after the center of the map has changed, pan back to the
-            //     // marker.
-            //     window.setTimeout(() => {
-            //         map.panTo(marker.getPosition());
-            //     }, 3000);
-            // });
+            let marker = new google.maps.Marker({
+                position: latlng,
+                map,
+            });
+
+            map.addListener("click", (e) => {
+                latlng = {
+                    lat: e.latLng.lat(),
+                    lng: e.latLng.lng(),
+                };
+                map.setCenter(latlng);
+                marker.setMap(null);
+                marker = new google.maps.Marker({
+                    position: latlng,
+                    map,
+                    animation: google.maps.Animation.DROP,
+                });
+
+                console.log(latlng);
+            });
         }
+
 
         window.initMap = initMap;
-
-        function getClickLatLng(lat_lng, map) {
-            // 座標を表示
-            document.getElementById('lat').textContent = lat_lng.lat();
-            document.getElementById('lng').textContent = lat_lng.lng();
-
-            const pos = {
-                position: lat_lng,
-                map: map
-            }
-
-            map.setMap(null);
-
-            // マーカーを設置
-            const marker = new google.maps.Marker({
-                pos
-            });
-
-            // 座標の中心をずらす
-            // http://syncer.jp/google-maps-javascript-api-matome/map/method/panTo/
-            map.panTo(lat_lng);
-        }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
+    <<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
 </body>
 
 </html>
