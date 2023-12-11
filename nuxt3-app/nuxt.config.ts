@@ -29,8 +29,11 @@ export default defineNuxtConfig({
       ],
       script: [
         {
-          src: "https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap", defer: true,
+          src: "https://polyfill.io/v3/polyfill.min.js?features=default"
         },
+        {
+          src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+        }
       ],
     },
   },

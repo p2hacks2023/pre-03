@@ -1,68 +1,78 @@
-<!DOCTYPE html>
-<html lang="ja">
+<!doctype html>
+<!--
+ @license
+ Copyright 2019 Google LLC. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+-->
+<html>
 
 <head>
-    <title>Test Map</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
+    <title>Simple Click Events</title>
+    <!-- jsFiddle will insert css and js -->
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <!-- 
+      The `defer` attribute causes the callback to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises.
+      See https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+      for more information.
+      -->
     <style>
+        #map {
+            height: 100%;
+        }
+        /* 
+ * Optional: Makes the sample page fill the window. 
+ */
+        
         html,
         body {
             height: 100%;
             margin: 0;
             padding: 0;
         }
-        
-        #map {
-            height: 80%;
-            width: 80%;
-        }
     </style>
-</head>
-
-<body>
-    <div id="map"></div>
-    <ul>
-        <li>lat: <span id="lat"></span></li>
-        <li>lng: <span id="lng"></span></li>
-    </ul>
     <script>
+        /**
+         * @license
+         * Copyright 2019 Google LLC. All Rights Reserved.
+         * SPDX-License-Identifier: Apache-2.0
+         */
         function initMap() {
-
-            // マップの初期化
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 13,
-                center: {
-                    lat: 36.38992,
-                    lng: 139.06065
-                }
+            const myLatlng = {
+                lat: -25.363,
+                lng: 131.044
+            };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: myLatlng,
+            });
+            const marker = new google.maps.Marker({
+                position: myLatlng,
+                map,
+                title: "Click to zoom",
             });
 
-            // クリックイベントを追加
-            map.addListener('click', function(e) {
-                getClickLatLng(e.latLng, map);
+            map.addListener("center_changed", () => {
+                // 3 seconds after the center of the map has changed, pan back to the
+                // marker.
+                window.setTimeout(() => {
+                    map.panTo(marker.getPosition());
+                }, 3000);
+            });
+            marker.addListener("click", () => {
+                map.setZoom(8);
+                map.setCenter(marker.getPosition());
             });
         }
 
-        function getClickLatLng(lat_lng, map) {
-
-            // 座標を表示
-            document.getElementById('lat').textContent = lat_lng.lat();
-            document.getElementById('lng').textContent = lat_lng.lng();
-
-            // マーカーを設置
-            var marker = new google.maps.Marker({
-                position: lat_lng,
-                map: map
-            });
-
-            // 座標の中心をずらす
-            // http://syncer.jp/google-maps-javascript-api-matome/map/method/panTo/
-            map.panTo(lat_lng);
-        }
+        window.initMap = initMap;
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
 </body>
 
 </html>
