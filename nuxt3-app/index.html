@@ -13,6 +13,10 @@
 
 <body>
     <div id="map"></div>
+    <ul>
+        <li>lat: <span id="lat"></span></li>
+        <li>lng: <span id="lng"></span></li>
+    </ul>
 
     <!-- 
       The `defer` attribute causes the callback to execute after the full HTML
@@ -23,7 +27,7 @@
       -->
     <style>
         #map {
-            height: 100%;
+            height: 80%;
         }
         /* 
  * Optional: Makes the sample page fill the window. 
@@ -43,34 +47,44 @@
          * SPDX-License-Identifier: Apache-2.0
          */
         function initMap() {
-            const myLatlng = {
-                lat: -25.363,
-                lng: 131.044
-            };
             const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 4,
-                center: myLatlng,
+                zoom: 13,
+                center: {
+                    lat: 41.79697589896441,
+                    lng: 140.75675010681152
+                }
             });
-            const marker = new google.maps.Marker({
-                position: myLatlng,
-                map,
-                title: "Click to zoom",
+            // クリックイベントを追加
+            map.addListener('click', function(e) {
+                getClickLatLng(e.latLng, map);
             });
 
-            map.addListener("center_changed", () => {
-                // 3 seconds after the center of the map has changed, pan back to the
-                // marker.
-                window.setTimeout(() => {
-                    map.panTo(marker.getPosition());
-                }, 3000);
-            });
-            marker.addListener("click", () => {
-                map.setZoom(8);
-                map.setCenter(marker.getPosition());
-            });
+            // map.addListener("center_changed", () => {
+            //     // 3 seconds after the center of the map has changed, pan back to the
+            //     // marker.
+            //     window.setTimeout(() => {
+            //         map.panTo(marker.getPosition());
+            //     }, 3000);
+            // });
         }
 
         window.initMap = initMap;
+
+        function getClickLatLng(lat_lng, map) {
+            // 座標を表示
+            document.getElementById('lat').textContent = lat_lng.lat();
+            document.getElementById('lng').textContent = lat_lng.lng();
+
+            // マーカーを設置
+            var marker = new google.maps.Marker({
+                position: lat_lng,
+                map: map
+            });
+
+            // 座標の中心をずらす
+            // http://syncer.jp/google-maps-javascript-api-matome/map/method/panTo/
+            map.panTo(lat_lng);
+        }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
 </body>
