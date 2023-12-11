@@ -75,10 +75,16 @@
             document.getElementById('lat').textContent = lat_lng.lat();
             document.getElementById('lng').textContent = lat_lng.lng();
 
-            // マーカーを設置
-            var marker = new google.maps.Marker({
+            const pos = {
                 position: lat_lng,
                 map: map
+            }
+
+            map.setMap(null);
+
+            // マーカーを設置
+            const marker = new google.maps.Marker({
+                pos
             });
 
             // 座標の中心をずらす
