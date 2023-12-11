@@ -1,6 +1,7 @@
 <template>
     <div>
         ひんやりあるばむ
+        <Button class="button"></Button>
     </div>
 </template>
 
