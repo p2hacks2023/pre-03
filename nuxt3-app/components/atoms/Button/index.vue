@@ -1,13 +1,15 @@
 <template>
-    <div>
-
+    <div class="button">
+        <slot />
     </div>
 </template>
 
 <script>
 export default {
-    name: "Button",
+    name: "Button"
 }
 </script>
 
-<style src="./index.css" scoped></style>
+<style lang="scss" scoped>
+@import './index.scss';
+</style>

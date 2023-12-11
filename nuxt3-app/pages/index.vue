@@ -10,5 +10,5 @@ export default {
 }
 </script>
 
-<style scoped src="./index.css"></style>
+<style src="./index.css" scoped></style>
 
