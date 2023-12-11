@@ -1,5 +1,7 @@
 <template>
-    <div class="button"><slot /></div>
+    <div class="button">
+        <slot />
+    </div>
 </template>
 
 <script>
@@ -8,4 +10,6 @@ export default {
 }
 </script>
 
-<style src="./index.css"></style>
+<style lang="scss" scoped>
+@import './index.scss';
+</style>
