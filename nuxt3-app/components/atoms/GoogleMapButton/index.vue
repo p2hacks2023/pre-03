@@ -1,13 +1,15 @@
 <template>
     <div>
-
+        Google Mapsで開く
     </div>
 </template>
 
 <script>
 export default {
-    name: "Button",
+    name: "GoogleMapButton"
 }
 </script>
 
-<style src="./index.css" scoped></style>
+<style lang="scss" scoped>
+@import './index.scss';
+</style>

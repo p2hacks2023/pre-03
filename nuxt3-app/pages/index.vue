@@ -1,6 +1,6 @@
 <template>
     <div>
-        ひんやりあるばむ
+        <GoogleMapButton></GoogleMapButton>
     </div>
 </template>
 
