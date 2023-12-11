@@ -9,19 +9,10 @@
 </template>
 
 <script>
+
 export default {
     name: "Home",
     mounted() {
-        // マップの初期化
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 13,
-            center: { lat: 36.38992, lng: 139.06065 }
-        });
-
-        // クリックイベントを追加
-        map.addListener('click', function (e) {
-            this.getClickLatLng(e.latLng, map);
-        });
     },
     methods: {
         getClickLatLng(lat_lng, map) {
