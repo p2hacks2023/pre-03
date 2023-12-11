@@ -13,7 +13,11 @@ export default defineNuxtConfig({
         // <meta name="description" content="My amazing site.">
         {
           name: "description",
+<<<<<<< HEAD
           content: "ひんやりとしたものを投稿、共有しよう。",
+=======
+          content: "ひんやりを集めて共通するウェブアプリです。",
+>>>>>>> nuxt3-app/Template
         },
       ],
       link: [
