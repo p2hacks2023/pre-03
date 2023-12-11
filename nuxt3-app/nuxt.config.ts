@@ -8,12 +8,12 @@ export default defineNuxtConfig({
     head: {
       charset: "utf-16",
       viewport: "width=device-width",
-      title: "Todo SINKEN",
+      title: "ひんやりあるばむ",
       meta: [
         // <meta name="description" content="My amazing site.">
         {
           name: "description",
-          content: "Todoアプリ。SINKEN疑似ハッカソン用。",
+          content: "ひんやりを集めて共有するWebアプリです。",
         },
       ],
       link: [
@@ -27,7 +27,11 @@ export default defineNuxtConfig({
           href: "/favicon.ico",
         },
       ],
-      script: [],
+      script: [
+        {
+          src: "https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap", defer: true,
+        },
+      ],
     },
   },
   css: [
