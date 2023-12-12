@@ -1,5 +1,6 @@
 <template>
   <div class="input-box-test">
+    <br>
     <OpinionBox placeholder="ご意見、ご要望をお書きください。" :value="''" @input="$emit('update:value', $event.target.value)" />
   </div>
 </template>
