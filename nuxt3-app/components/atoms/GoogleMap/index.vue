@@ -1,7 +1,7 @@
 <template>
     <div>
-        <iframe :width="width" :height="height" src="http://10.124.64.38:8080/t/GoogleMaps.html" class="map"></iframe>
-        <!-- <iframe :width="width" :height="height" src="https://portfolio.kcat.dev/t/GoogleMaps.html" class="map"></iframe> -->
+        <!-- <iframe :width="width" :height="height" src="http://10.124.64.38:8080/t/GoogleMaps.html" class="map"></iframe> -->
+        <iframe :width="width" :height="height" src="https://portfolio.kcat.dev/t/GoogleMaps.html" class="map"></iframe>
     </div>
 </template>
 
