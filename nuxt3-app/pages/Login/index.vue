@@ -11,6 +11,12 @@
     <div class="links">
         <button @click="login" class="button--green">LogIn</button>
     </div>
+<<<<<<< HEAD
+=======
+    <div class="links">
+        <button @click="logout" class="button--green">LogOut</button>
+    </div>
+>>>>>>> feat/logout
 </template>
 
 
@@ -57,7 +63,8 @@ export default {
                     const errorCode = error.code;
                     const errorMessage = error.message;
                 });
-        }
+        },
+        
     }
 }
 </script>
