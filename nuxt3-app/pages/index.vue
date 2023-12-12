@@ -1,6 +1,6 @@
 <template>
     <div>
-        
+        <GoogleMapButton/>
     </div>
 </template>
 
