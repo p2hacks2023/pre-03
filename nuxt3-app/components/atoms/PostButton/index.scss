@@ -1,15 +1,31 @@
-div.circle {
+.circle {
+    position: fixed;
     width: 51px;
     height: 51px;
-    border-radius: 50px;
+    border-radius:50%;
     background-color: #A8D4FC;
     color: #FCFCFC;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 16px;
-    margin: auto;
+    transform: translate(-50%, -50%);
+    top: 100px;
+    left: 100px;
+}
+.verticalLine {
+    position: absolute;
+    width: 1px;
+    height: 13px;
+    background: #FFFFFF;
+    transform: translate(-50%, -50%);
+    top: 26px;
+    left: 26px;
+}
+.horizontalLine {
+	position: absolute;
+	width: 13px; 
+	height: 1px; 
+	background: #FFFFFF; 
+    transform: translate(-50%, -50%);
+    top: 26px;
+    left: 26px;
 }
 
 div:hover {

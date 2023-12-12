@@ -1,6 +1,7 @@
 <template>
     <div class="circle">
-        +
+        <div class="verticalLine"></div>
+        <div class="horizontalLine"></div>
     </div>
 </template>
 
