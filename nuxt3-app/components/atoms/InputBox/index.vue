@@ -3,7 +3,7 @@
         <input :type="type" :placeholder="placeholder" :value="value" @input="$emit('update:value', $event.target.value)" />
     </div>
 </template>
-  
+
 <script setup>
 defineProps({
     type: {
@@ -20,8 +20,6 @@ defineProps({
     }
 });
 </script>
-  
-
 
 <style lang="scss" scoped> @import './index.scss';
 </style>
