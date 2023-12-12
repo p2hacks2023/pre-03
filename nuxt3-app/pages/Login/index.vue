@@ -11,19 +11,16 @@
     <div class="links">
         <button @click="login" class="button--green">LogIn</button>
     </div>
-<<<<<<< HEAD
-=======
     <div class="links">
-        <button @click="logout" class="button--green">LogOut</button>
+        <button @click="loginwithgoogle" class="button--green">LogInWithGoogle</button>
     </div>
->>>>>>> feat/logout
 </template>
 
 
 
 <script>
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 
 export default {
     auth: undefined,
@@ -64,7 +61,10 @@ export default {
                     const errorMessage = error.message;
                 });
         },
-        
+        loginwithgoogle: function () {
+            const provider = new GoogleAuthProvider();
+            signInWithRedirect(this.auth, provider);
+        }
     }
 }
 </script>

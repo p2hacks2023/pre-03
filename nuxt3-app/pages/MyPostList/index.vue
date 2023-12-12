@@ -1,6 +1,11 @@
-<template></template>
+<template>
+    <div class="links">
+        <button @click="logout" class="button--green">Logout</button>
+    </div>
+</template>
 
 <script>
+import { initializeApp } from "firebase/app";
 import { getAuth, signOut } from "firebase/auth";
 export default {
     name: "MyPostList",
@@ -22,13 +27,16 @@ export default {
         // Initialize Firebase Authentication and get a reference to the service
         this.auth = getAuth(app);
     },
-    logout: function () {
-        signOut(this.auth).then(() => {
-            console.log("logout success");
-        }).catch((error) => {
-            // An error ocurred
-            // ...
-        });
+    methods: {
+        logout: function () {
+            signOut(this.auth).then(() => {
+                console.log("logout success");
+            }).catch((error) => {
+                console.log("logout error");
+                // An error ocurred
+                // ...
+            });
+        }
     }
 }
 </script>
