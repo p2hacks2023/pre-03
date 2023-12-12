@@ -2,22 +2,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10vh;
 }
 
 .input-box input {
+    width: 290px;
+    height: 36px;
     padding: 0.8rem 1rem;
-    border: 2px solid #e2e8f0;
-    border-radius: 1px;
+    border: 1px solid #1e1e1f;
+    border-radius: 3px;
+    font-family: Roboto;
     font-size: 1rem;
-    color: #2d3748;
+    color: #777777;
     background-color: #fff;
     transition: border-color 0.3s, box-shadow 0.3s;
     margin: 0;
 }
 
 .input-box input::placeholder {
-    color: #3a3e44;
+    color: #6e7072;
 }
 
 .input-box input:focus {
