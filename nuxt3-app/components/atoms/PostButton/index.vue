@@ -1,16 +1,15 @@
 <template>
-    <div>
-        <PostButton/>
+    <div class="circle">
+        +
     </div>
 </template>
 
 <script>
 export default {
-    name: "Home",
+    name: "PostButton"
 }
 </script>
 
 <style lang="scss" scoped>
 @import "./index.scss";
 </style>
-
