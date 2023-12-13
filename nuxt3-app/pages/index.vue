@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
     <div id="App">
         <div id="header">ひんやりあるばむ</div>
         <div class="post-list">
@@ -12,9 +11,6 @@
         </div>
         <PostButton id="PostButton"/>
         <Menu />
-=======
-    <div>
->>>>>>> feat/LoginBoxComponent
     </div>
 </template>
 
