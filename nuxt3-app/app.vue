@@ -6,9 +6,10 @@
 
 <script>
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 
 export default {
+  db: undefined,
   mounted() {
     const firebaseConfig = {
       apiKey: "AIzaSyDb6Y-8ischpWY57SxMxk3TYD76EDtA9ZY",
@@ -24,16 +25,26 @@ export default {
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     // Initialize Cloud Firestore and get a reference to the service
-    const db = getFirestore(app);
-
-    // Add a new document in collection "cities"
-    addDoc(collection(db, "hinnyaris"), {
-      evaluationValue: 1,
-      imageUrl: "test",
-      mapUrl: "test",
-      objectName: "test",
-      spotName: "test"
-    });
+    this.db = getFirestore(app);
+  },
+  methods: {
+    addData: function () {
+      // Add a new document in collection "cities"
+      addDoc(collection(this.db, "hinnyaris"), {
+        evaluationValue: 1,
+        imageUrl: "test",
+        mapUrl: "test",
+        objectName: "test",
+        spotName: "test"
+      });
+    },
+    getDatas: async function () {
+      const querySnapshot = await getDocs(collection(db, "hinnyaris"));
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+      });
+    }
   }
 }
 </script>
