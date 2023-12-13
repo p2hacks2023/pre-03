@@ -1,19 +1,15 @@
 <template>
-    <div>
-<<<<<<< HEAD
-=======
-        <CloseButton/>
->>>>>>> feat/CloseButtonCOmponent
+    <div class="circle">
+        <div class="close"></div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "App",
+    name: "CloseButton"
 }
 </script>
 
 <style lang="scss" scoped>
 @import "./index.scss";
 </style>
-
