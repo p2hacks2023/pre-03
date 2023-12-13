@@ -1,5 +1,7 @@
 <template>
     <div>
+        ひんやりあるばむ
+        <PostPopUpMap />
     </div>
 </template>
 
