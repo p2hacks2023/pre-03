@@ -1,17 +1,15 @@
 <template>
     <div>
-        <PostPopUpMap />
+        <slot />
     </div>
 </template>
 
 <script>
 export default {
-    name: "App",
+    name: "Lavel",
 }
-
 </script>
 
 <style lang="scss" scoped>
 @import "./index.scss";
 </style>
-
