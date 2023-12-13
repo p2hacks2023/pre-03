@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>ひんやりあるばむ</h1><br>
+        <LoginBox />
     </div>
 </template>
 

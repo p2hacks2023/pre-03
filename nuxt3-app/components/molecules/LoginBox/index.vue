@@ -1,6 +1,8 @@
 <template>
     <div>
-        ひんやりあるばむ
+        <div>ひんうやりあるばむアカウントでログイン</div>
+        <InputBox placeholder="メールアドレス" :value="value" @input="$emit('update:value', $event.target.value)" /> />
+        <InputBox type="password" placeholder="パスワード" />
     </div>
 </template>
 

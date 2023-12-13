@@ -1,40 +1,23 @@
-.input-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.input-box input {
+div input {
     width: 290px;
     height: 36px;
-    padding: 0.8rem 1rem;
+    padding: 0.8rem 0.5rem;
     border: 1px solid #1e1e1f;
     border-radius: 3px;
     font-family: Roboto;
     font-size: 1rem;
-    color: #777777;
-    background-color: #fff;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    color: black;
+    background-color: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
     margin: 0;
 }
 
-.input-box input::placeholder {
+div input::placeholder {
     color: #6e7072;
 }
 
-.input-box input:focus {
+div input:focus {
     border-color: #63b3ed;
-    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.5);
+    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.3);
     outline: none;
-}
-
-.input-box input:disabled {
-    background-color: #edf2f7;
-    color: #a0aec0;
-    cursor: not-allowed;
-}
-
-.input-box input:read-only {
-    background-color: #f7fafc;
-    color: #718096;
 }
