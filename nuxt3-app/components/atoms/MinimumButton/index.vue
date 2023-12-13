@@ -1,13 +1,12 @@
 <template>
     <div class="button">
-        ボタン
         <slot />
     </div>
 </template>
 
 <script>
 export default {
-    name: "Button"
+    name: "Minimum"
 }
 </script>
 
