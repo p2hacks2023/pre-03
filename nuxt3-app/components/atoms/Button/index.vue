@@ -1,15 +1,15 @@
 <template>
-    <div>
-        ひんやりあるばむ
-    </div>
+  <div class="button">
+      <slot />
+  </div>
 </template>
 
 <script>
 export default {
-    name: "Home",
+  name: "Button"
 }
 </script>
 
 <style lang="scss" scoped>
-@import "./index.scss";
+@import './index.scss';
 </style>
