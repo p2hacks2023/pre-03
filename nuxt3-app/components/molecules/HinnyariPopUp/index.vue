@@ -1,10 +1,12 @@
 <template>
-    <div>
-        <CloseButton />
-        <img :src=imgPath alt="ひんやり画像">
-        <div>商品名：{{ name }}</div>
-        <Evaluation :evaluation-sum-value="evaluationSumValue" :evaluation-count="evaluationCount" />
-        <GoogleMapButton />
+    <div class="HinnyariPopUp">
+        <div class="wrap">
+            <CloseButton class="CloseButton" />
+            <img :src=imgPath alt="ひんやり画像">
+            <div class="name">商品名：{{ name }}</div>
+            <Evaluation class="Evaluation" :evaluation-sum-value="evaluationSumValue" :evaluation-count="evaluationCount" />
+            <GoogleMapButton class="GoogleMapButton" />
+        </div>
     </div>
 </template>
 
