@@ -9,6 +9,7 @@
                 </div>
             </div>
         </div>
+        <PostButton id="PostButton"/>
         <Menu />
     </div>
 </template>
