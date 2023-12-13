@@ -1,0 +1,39 @@
+.button-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.google-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 290px;
+  height: 36px;
+  padding: 0.8rem 1rem;
+  border: 1px solid #4c4c4d;
+  background-color: #ffffff;
+  border-radius: 3px;
+  color: #000000;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+}
+
+.iconGoogle {
+  margin-right: 8%;
+}
+
+.google-login.hover {
+  background-color: #e6e6e6;
+  border-color: #c8c8c8;
+  color: #303030;
+}
+
+
+.google-login.is-hover {
+  background-color: #e6e6e6;
+  border-color: #c8c8c8;
+  color: #303030;
+}

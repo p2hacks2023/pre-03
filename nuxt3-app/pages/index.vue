@@ -1,6 +1,7 @@
 <template>
     <div>
-        ひんやりあるばむ
+        <h1>ひんやりあるばむ</h1><br>
+        <NuxtLink to="/GoogleAccountButtonTest">Googleアカウントボタン</NuxtLink>
     </div>
 </template>
 
