@@ -1,12 +1,22 @@
 <template>
     <div>
-        
+        <div>
+            <div v-for="hinnyari in hinnyaris">
+
+            </div>
+        </div>
+        <Menu />
     </div>
 </template>
 
 <script>
 export default {
-    name: "Home",
+    name: "App",
+    data: () => {
+        return {
+            hinnyaris: [],
+        }
+    }
 }
 </script>
 
