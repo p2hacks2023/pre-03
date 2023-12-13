@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="fai">
         <!-- https://fontawesome.com/search -->
         <!-- free版ではBrands IconとClassic Iconが利用可能。-->
-        
+
         <font-awesome-icon :icon="['fas', 'house']" style="height: 100px"/>
         <font-awesome-icon :icon="['fas', 'magnifying-glass']" style="width: 10%"/>
         <font-awesome-icon :icon="['fas', 'user']" />
@@ -23,6 +23,8 @@
         <font-awesome-icon :icon="['far', 'folder-open']" />
         <font-awesome-icon :icon="['fas', 'right-to-bracket']" />
         <font-awesome-icon :icon="['fas', 'arrow-right-from-bracket']" />
+
+        <font-awesome-icon :icon="['far', 'user']" style="{color: 'red'}"/>
     </div>
 </template>
 
