@@ -1,6 +1,6 @@
 <template>
     <div>
-        <!-- <GoogleMap width=300px height=500px /> -->
+        <GoogleMap width=300px height=500px />
     </div>
 </template>
 
