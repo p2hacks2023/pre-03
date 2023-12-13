@@ -6,7 +6,7 @@
             <InputBox class="InputBox" type="password" placeholder="パスワード" @onchange="(val) => { console.log(val) }" />
             <Button class="Button">新規作成</Button>
             <hr />
-            <GoogleAuthButton class="GoogleAuthButton" />
+            <GoogleAuthButton class="GoogleLoginButton" />
         </div>
     </div>
 </template>
