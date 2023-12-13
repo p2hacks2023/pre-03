@@ -3,10 +3,10 @@
         ひんやりあるばむ
     </div>
 </template>
-
 <script>
+
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
 
 export default {
 name: "Home",
@@ -46,6 +46,10 @@ name: "Home",
         // doc.data() is never undefined for query doc snapshots
         console.log(doc.id, " => ", doc.data());
       });
+    },
+    delete: async function () {
+      const docname = "2QKnhbHen7RPO6hEwUzI";
+      await deleteDoc(doc(this.db, "hinnyaris", docname));
     }
   }
 }
