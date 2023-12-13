@@ -1,0 +1,47 @@
+.Menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    height: 75px;
+    background-color: #D1D4EC;
+    position: fixed;
+    bottom: 0px;
+}
+
+.user {
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    padding: 7px;
+    border-radius: 50%;
+}
+
+.home {
+    width: 50px;
+    height: 55px;
+}
+
+.game {
+    width: 70px;
+    height: 45px;
+}
+
+.circle {
+    background-color: #718D8E;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.icon {
+    color: black;
+}
+
+.icon {
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <PostButton/>
+        
     </div>
 </template>
 
@@ -13,4 +13,3 @@ export default {
 <style lang="scss" scoped>
 @import "./index.scss";
 </style>
-
