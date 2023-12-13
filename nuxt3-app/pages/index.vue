@@ -2,6 +2,11 @@
     <div>
         ひんやりあるばむ
     </div>
+    <div class="links">
+        <button @click="download" class="button--green">Download</button>
+    </div>
+    <!-- ダウンロードされた画像が以下に表示される -->
+    <img id="img_url" :src="img_url" />
     <input type="file" @change="upload" />
     <!-- アップロードされた画像が以下に表示される -->
     <img v-if="img_url" :src="img_url" />
@@ -11,7 +16,7 @@
 <script>
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default {
     name: "Home",
@@ -69,12 +74,30 @@ export default {
             uploadBytes(storageRef, file).then((snapshot) => {
                 console.log('Uploaded a blob or file!');
             });
+        },
+        download: function () {
+            const filename = "いも.jpg";
+            const pathReference = ref(this.storage, 'hinnyaris/' + filename);
+            getDownloadURL(pathReference)
+                .then((url) => {
+                    // This can be downloaded directly:
+                    const xhr = new XMLHttpRequest();
+                    xhr.responseType = 'blob';
+                    xhr.onload = (event) => {
+                        const blob = xhr.response;
+                    };
+                    xhr.open('GET', url);
+                    xhr.send();
+
+                    // Or inserted into an <img> element
+                    const img = document.getElementById('img_url');
+                    img.src = url;
+                })
+                .catch((error) => {
+                    // Handle any errors
+                });
         }
+
     }
 }
 </script>
-
-<style lang="scss" scoped>
-@import "./index.scss";
-</style>
-
