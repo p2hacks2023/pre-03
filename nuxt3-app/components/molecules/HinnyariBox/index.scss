@@ -11,4 +11,9 @@ img {
     border-radius: 10px;
     display: flex;
     align-items: center;
+    box-shadow: -2px 5px 3px rgb(220, 220, 220);
+}
+
+.HinnyariBox:hover {
+    cursor: pointer;
 }
