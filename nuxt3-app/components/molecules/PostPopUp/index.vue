@@ -1,14 +1,18 @@
 <template>
-    <div>
-        <div>
+    <div class="PostPopUp">
+        <CloseButton class="CloseButton" />
+        <div class="select-img">
             <div class="mini-buttons">
-                <MinimumButton>画像を選択</MinimumButton>
+                <div class="select-file">
+                    <input type="file">
+                    <MinimumButton>画像を選択</MinimumButton>
+                </div>
                 <MinimumButton>スポット選択へ戻る</MinimumButton>
             </div>
             <img :src="imgPath" alt="選択画像">
-            <InputBox placeholder="商品名・スポット名" @onchange="(val) => {console.log(val)}"/>
-            <Button>投稿</Button>
         </div>
+        <InputBox class="InputBox" placeholder="商品名・スポット名" @onchange="(val) => { console.log(val) }" />
+        <Button class="Button">投稿</Button>
     </div>
 </template>
 
@@ -21,7 +25,7 @@ export default {
     name: "PostPopUp",
     data: () => {
         return {
-            imgPath: "",
+            imgPath: "images/testImage.jpg",
         }
     },
     db: undefined,

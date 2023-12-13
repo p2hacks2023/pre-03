@@ -1,6 +1,5 @@
 <template>
     <div>
-        <PostPopUp />
     </div>
 </template>
 
