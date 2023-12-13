@@ -1,6 +1,6 @@
 <template>
     <div>
-        <PostPopUpMap />
+        <AppPagePostPopUp />
     </div>
 </template>
 

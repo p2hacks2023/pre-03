@@ -1,0 +1,14 @@
+.fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #49494940;
+    width: 100vw;
+    height: 100vh;
+}
+
+.PostPopUpMap {
+    position: absolute;
+    top: calc(50vh - 350px / 2);
+    left: calc(50vw - 330px / 2);
+}

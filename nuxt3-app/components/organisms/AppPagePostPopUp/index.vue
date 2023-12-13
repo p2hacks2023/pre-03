@@ -1,12 +1,13 @@
 <template>
     <div>
-        <slot />
+        <div class="fade" />
+        <PostPopUpMap class="PostPopUpMap" />
     </div>
 </template>
 
 <script>
 export default {
-    name: "Label",
+    name: "AppPagePostPopUp",
 }
 </script>
 
