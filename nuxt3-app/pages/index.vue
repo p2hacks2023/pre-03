@@ -1,8 +1,11 @@
 <template>
     <div>
         <div v-for="hinnyari in hinnyaris">
-            <HinnyariBox class="HinnyariBox" :name="hinnyari.spotName" :imgPath="'images/testImage.jpg'"
-                :evaluation-sum-value="hinnyari.evaluationValue" :evaluation-count="hinnyari.evaluationCount" />
+            <HinnyariBox class="HinnyariBox"
+            :name="hinnyari.spotName"
+            :imgPath="'images/testImage.jpg'"
+            :evaluation-sum-value="hinnyari.evaluationValue"
+            :evaluation-count="hinnyari.evaluationCount" />
         </div>
     </div>
     <div class="links">
