@@ -7,7 +7,7 @@
             <Button class="Button">Login</Button>
             <Button class="Button">新規作成</Button>
             <hr />
-            <GoogleAuthButton class="GoogleAuthButton" />
+            <GoogleAuthButton class="GoogleLoginButton" />
         </div>
     </div>
 </template>
