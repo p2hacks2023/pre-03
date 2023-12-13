@@ -1,35 +1,31 @@
-.circle {
+div {
     position: relative;
-    top: 100px;
-    left: 100px;
-    width: 26px;
+    width: 25px;
     height: 25px;
-    border-radius:50%;
+    border-radius: 50%;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     background-color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.close {//左斜めの線
-	//position: absolute;
-	width: 1px;
-	height: 15px;
-	background: #000000;
-	transform: rotate(-45deg);
-}
-
-.close::after {//右斜めの線
-	content: "";
-	position: absolute;
-    top: 7px;
-    left: -7px;
-	width: 15px;
-	height: 1px;
-	background: #000000;
 }
 
 div:hover {
     cursor: pointer;
+}
+
+i {
+    position: absolute;
+    top: 11px;
+    left: 4px;
+    width: 15px;
+    height: 1px;
+    display: block;
+    background-color: black;
+    margin: auto;
+}
+
+i:nth-of-type(1) {
+    transform: rotate(45deg);
+}
+
+i:nth-of-type(2) {
+    transform: rotate(135deg);
 }

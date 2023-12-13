@@ -1,6 +1,7 @@
 <template>
-    <div class="circle">
-        <div class="close"></div>
+    <div>
+        <i></i>
+        <i></i>
     </div>
 </template>
 
