@@ -1,5 +1,6 @@
 <template>
     <div>
+        <NoLoginButtons />
     </div>
 </template>
 

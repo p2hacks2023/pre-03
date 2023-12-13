@@ -1,0 +1,18 @@
+.Buttons {
+    position: absolute;
+    left: calc(50vw - 290px / 2);
+    text-decoration: none;
+}
+
+.Button {
+    width: 290px;
+    height: 40px;
+}
+
+.Button1 {
+    top: calc(50vh - 40px / 2 - 40px);
+}
+
+.Button2 {
+    top: calc(50vh - 40px / 2 + 40px);
+}
