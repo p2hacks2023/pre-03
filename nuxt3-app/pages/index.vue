@@ -1,6 +1,5 @@
 <template>
     <div>
-        ひんやりあるばむ
     </div>
 </template>
 
