@@ -1,5 +1,6 @@
 <template>
     <div class="button">
+        ボタン
         <slot />
     </div>
 </template>

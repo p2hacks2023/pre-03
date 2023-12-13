@@ -1,7 +1,5 @@
 <template>
     <div>
-        ひんやりあるばむ
-        <Button style="width: 200px;">ぼたん</Button>
     </div>
 </template>
 
