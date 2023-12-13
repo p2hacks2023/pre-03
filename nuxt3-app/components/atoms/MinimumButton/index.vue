@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: "Minimum"
+    name: "MinimumButton"
 }
 </script>
 
