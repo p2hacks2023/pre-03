@@ -1,6 +1,6 @@
 <template>
     <div>
-        ひんやりあるばむ
+        <Menu />
     </div>
 </template>
 
