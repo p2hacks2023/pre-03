@@ -1,5 +1,6 @@
 <template>
     <div>
+        <MinimumButton style="width:120px; height:30px; margin:30px auto;">ぼたん</MinimumButton>
     </div>
 </template>
 
