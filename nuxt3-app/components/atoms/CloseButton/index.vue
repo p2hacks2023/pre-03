@@ -1,16 +1,15 @@
 <template>
-    <div>
-        <CloseButton/>
+    <div class="circle">
+        <div class="close"></div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "Home",
+    name: "CloseButton"
 }
 </script>
 
 <style lang="scss" scoped>
 @import "./index.scss";
 </style>
-
