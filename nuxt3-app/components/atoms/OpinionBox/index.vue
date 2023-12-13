@@ -1,10 +1,6 @@
 <template>
   <div class="opinion-box">
-    <textarea
-      :placeholder="placeholder"
-      :value="value"
-      @input="$emit('update:value', $event.target.value)"
-    />
+    <textarea :placeholder="placeholder"/>
   </div>
 </template>
 
@@ -19,6 +15,12 @@ defineProps({
     default: ''
   }
 });
+</script>
+
+<script>
+export default {
+  name: "OpinionBox",
+}
 </script>
 
 

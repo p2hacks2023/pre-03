@@ -1,9 +1,6 @@
 <template>
     <div>
         ひんやりあるばむ
-        <!-- <NuxtLink to="/InputBoxTest">入力テスト</NuxtLink>-->
-        <br> 
-        <NuxtLink to="/OpinionBoxTest">いけんばこ入力テスト</NuxtLink>
     </div>
 </template>
 
