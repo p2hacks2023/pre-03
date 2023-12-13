@@ -1,8 +1,14 @@
 <template>
-    <div>
-        <div>ひんうやりあるばむアカウントでログイン</div>
-        <InputBox placeholder="メールアドレス" :value="value" @input="$emit('update:value', $event.target.value)" /> />
-        <InputBox type="password" placeholder="パスワード" />
+    <div class="LoginBox">
+        <div class="wrap">
+            <div class="label">ひんやりあるばむアカウントでログイン</div>
+            <InputBox class="InputBox" placeholder="メールアドレス" @onchange="(val) => { console.log(val) }" />
+            <InputBox class="InputBox" type="password" placeholder="パスワード" @onchange="(val) => { console.log(val) }" />
+            <Button class="Button">Login</Button>
+            <Button class="Button">新規作成</Button>
+            <hr />
+            <GoogleAuthButton class="GoogleAuthButton" />
+        </div>
     </div>
 </template>
 

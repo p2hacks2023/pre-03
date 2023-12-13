@@ -1,13 +1,17 @@
 <template>
     <div>
-        <input :type="type" :placeholder="placeholder" v-model="str" @onchange="emitEvent" />
+        <input :type="type" :placeholder="placeholder" v-model="value" @change="this.$emit('onchange', value)" />
     </div>
 </template>
 
-<script setup>
-const inputValue = ref(''),
+<script>
 export default {
     name: "InputBox",
+    data: () => {
+        return {
+            value: undefined,
+        }
+    },
     props: {
         type: {
             type: String,
@@ -18,12 +22,6 @@ export default {
             default: ""
         },
     },
-    methods: {
-        emitValue() {
-            // 親コンポーネントにイベントを発行し、入力値をデータとして渡す
-            this.$emit('onchange', inputValue.value);
-        }
-    }
 }
 </script>
 
