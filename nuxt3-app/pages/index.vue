@@ -1,12 +1,11 @@
 <template>
     <div>
-        ひんやりあるばむ
     </div>
 </template>
 
 <script>
 export default {
-    name: "Home",
+    name: "App",
 }
 </script>
 
