@@ -9,3 +9,23 @@
   stroke: #82a5c8;
     stroke-width: 12px;
 }
+
+.fai:hover {
+  color: #ffffff;
+}
+
+.star {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#f49a11;
+}
+
+.buttom {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  background-color: #d1d4ec;
+}
