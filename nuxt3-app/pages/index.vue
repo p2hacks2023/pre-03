@@ -14,7 +14,7 @@
                 :evaluation-sum-value="10" :evaluation-count="4" />
         </div>
         <div id="SelectMap">
-            <GoogleMap :width="width" :height="height" />
+            <AppPagePostPopUp />
         </div>
         <PostButton id="PostButton" />
         <Menu />

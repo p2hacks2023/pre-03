@@ -1,0 +1,26 @@
+div {
+    position: relative;
+    border-radius: 5px;
+}
+
+.Button {
+    z-index: 2;
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    width: 80px;
+    height: 30px;
+    border-radius: 20px;
+}
+
+.GoogleMap {
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.Label {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
