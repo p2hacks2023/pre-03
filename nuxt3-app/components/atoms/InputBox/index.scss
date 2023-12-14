@@ -1,0 +1,23 @@
+div input {
+    width: 290px;
+    height: 36px;
+    padding: 0.8rem 0.5rem;
+    border: 1px solid #1e1e1f;
+    border-radius: 3px;
+    font-family: Roboto;
+    font-size: 1rem;
+    color: black;
+    background-color: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    margin: 0;
+}
+
+div input::placeholder {
+    color: #6e7072;
+}
+
+div input:focus {
+    border-color: #63b3ed;
+    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.3);
+    outline: none;
+}
