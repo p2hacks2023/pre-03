@@ -1,0 +1,39 @@
+.label {
+    font-size: 13px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.LoginBox {
+    width: 330px;
+    height: 330px;
+    background: #FEFEFE;
+    box-shadow: 1px 1px 3px rgb(190, 190, 190);
+    position: absolute;
+    top: calc(50vh - 330px / 2);
+    left: calc(50vw - 330px / 2);
+}
+
+hr {
+    margin: 20px auto;
+}
+
+.wrap {
+    width: 290px;
+    margin: auto;
+}
+
+.Button {
+    width: 290px;
+    height: 30px;
+    margin: 15px 0;
+}
+
+.InputBox {
+    width: 290px;
+    margin: 15px 0;
+}
+
+.GoogleAuthButton {
+    margin: 20px auto;
+}
