@@ -1,5 +1,5 @@
 <template>
-
+    <LoginBox />
 </template>
 
 <script>
