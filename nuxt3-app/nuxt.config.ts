@@ -8,12 +8,16 @@ export default defineNuxtConfig({
     head: {
       charset: "utf-16",
       viewport: "width=device-width",
-      title: "Todo SINKEN",
+      title: "ひんやりあるばむ",
       meta: [
         // <meta name="description" content="My amazing site.">
         {
           name: "description",
-          content: "Todoアプリ。SINKEN疑似ハッカソン用。",
+<<<<<<< HEAD
+          content: "ひんやりとしたものを投稿、共有しよう。",
+=======
+          content: "ひんやりを集めて共通するウェブアプリです。",
+>>>>>>> nuxt3-app/Template
         },
       ],
       link: [
