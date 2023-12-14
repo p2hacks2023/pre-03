@@ -1,10 +1,6 @@
 <template>
     <div>
-<<<<<<< HEAD:nuxt3-app/components/atoms/Button/index.vue
         <slot />
-=======
-        Google Mapsで開く
->>>>>>> feat/HinnyariPopUpComponent:nuxt3-app/components/atoms/GoogleMapButton/index.vue
     </div>
 </template>
 
