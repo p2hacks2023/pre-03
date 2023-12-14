@@ -1,0 +1,48 @@
+.opinion-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// .opinion-box textarea {
+//   width: 60%;
+//   min-height: 200px;
+//   padding: 1rem;
+//   border: 2px solid #e2e8f0;
+//   border-radius: 20px;
+//   font-size: 1rem;
+//   resize: vertical;
+// }
+
+.opinion-box textarea {
+  width: 330px;
+  height: 209px;
+  padding: 0.8rem 1rem;
+  border: 1px solid #4c4c4d;
+  border-radius: 10px;
+  font-family: Roboto;
+  font-size: 1rem;
+  color: #2d3748;
+  background-color: #fff;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  margin: 0;
+  //overflow: hidden;
+  resize: none;
+}
+
+.opinion-box textarea:focus {
+  border-color: #63b3ed;
+  box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.5);
+  outline: none;
+}
+
+.opinion-box textarea:disabled {
+  background-color: #edf2f7;
+  color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.opinion-box textarea:read-only {
+  background-color: #f7fafc;
+  color: #718096;
+}
