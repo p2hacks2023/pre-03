@@ -5,7 +5,7 @@
             <img :src=imgPath alt="ひんやり画像">
             <div class="name">商品名：{{ name }}</div>
             <Evaluation class="Evaluation" :evaluation-sum-value="evaluationSumValue" :evaluation-count="evaluationCount" />
-            <GoogleMapButton class="GoogleMapButton" />
+            <GoogleMapButton class="GoogleMapButton">Google Mapsで開く</GoogleMapButton>
         </div>
     </div>
 </template>

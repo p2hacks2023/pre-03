@@ -9,6 +9,22 @@
     color: white;
 }
 
+#HinnyariPopUp {
+    position: absolute;
+    top: calc(50vh - 350px / 2);
+    left: calc(50vw - 330px / 2);
+}
+
+#HinnyariPopUpBox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    background-color: #49494980;
+}
+
 .HinnyariBox {
     margin: 20px auto;
 }
