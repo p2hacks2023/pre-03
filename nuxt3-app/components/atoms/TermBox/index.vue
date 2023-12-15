@@ -1,13 +1,15 @@
 <template>
   <div class="box">
-    <div class="margin">
-      <div v-for="term in terms">
-        <div class="heading">
-          {{ term.heading }}
+      <div class="scrollbar">
+        <div class="scrollbar__box">
+          <div v-for="term in terms">
+            <div class="heading">
+              {{ term.heading }}
+            </div>
+            <p>{{ term.text }}</p>
+            <br/>
+          </div>
         </div>
-        <p>{{ term.text }}</p>
-        <br/>
-      </div>
     </div>
   </div>
 </template>
