@@ -1,5 +1,6 @@
 .fade {
-    position: absolute;
+    position: fixed;
+    z-index: 5;
     top: 0;
     left: 0;
     background-color: #49494940;
@@ -8,7 +9,8 @@
 }
 
 .PostPopUpMap {
-    position: absolute;
+    position: fixed;
+    z-index: 6;
     top: calc(50vh - 350px / 2);
     left: calc(50vw - 330px / 2);
 }

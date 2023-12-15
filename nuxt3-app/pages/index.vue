@@ -1,5 +1,5 @@
 <template>
-    <div id="App">
+    <div id="App" :class="isSelectMap ? 'noScroll' : ''">
         <div id="header">ひんやりあるばむ</div>
         <div class="post-list">
             <div v-for="n in 5">
@@ -10,13 +10,17 @@
             </div>
         </div>
         <div v-if=false id="HinnyariPopUpBox">
-            <HinnyariPopUp id="HinnyariPopUp" :name="'hogehoge'" :imgPath="'images/testImage.jpg'"
+            <HinnyariPopUp v-if="isHinyariPopUp" id="HinnyariPopUp" :name="'hogehoge'" :imgPath="'images/testImage.jpg'"
                 :evaluation-sum-value="10" :evaluation-count="4" />
         </div>
-        <div id="SelectMap">
-            <AppPagePostPopUp />
+        <div v-if="isSelectMap" id="SelectMap">
+            <AppPagePostPopUp @clickClose="postPopUpClose" @clickOk="inputSpot" />
         </div>
-        <PostButton id="PostButton" />
+        <div v-if="isInputSpot" id="InputSpot">
+            <GoogleMap class="GoogleMap" :width="width+'px'" :height="height+'px'" />
+            <div></div>
+        </div>
+        <PostButton id="PostButton" @click="postPopUp" />
         <Menu />
     </div>
 </template>
@@ -36,6 +40,8 @@ export default {
             storage: undefined,
             width: 0,
             height: 0,
+            isSelectMap: false,
+            isInputSpot: true,
         }
     },
     mounted() {
@@ -97,6 +103,16 @@ export default {
                 .catch((error) => {
                     // Handle any errors
                 });
+        },
+        postPopUp: function() {
+            this.isSelectMap = true;
+        },
+        postPopUpClose: function() {
+            this.isSelectMap = false;
+        },
+        inputSpot: function() {
+            this.isSelectMap = false;
+            this.isInputSpot = true;
         }
     }
 }

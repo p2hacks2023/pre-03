@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="fade" />
-        <PostPopUpMap class="PostPopUpMap" />
+        <PostPopUpMap class="PostPopUpMap" @clickOk="this.$emit('clickOk')" @clickClose="this.$emit('clickClose')" />
     </div>
 </template>
 

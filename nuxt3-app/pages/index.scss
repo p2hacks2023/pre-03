@@ -39,3 +39,27 @@
     bottom: 100px;
     right: 40px;
 }
+
+.noScroll {
+    overflow-y: hidden;
+}
+
+.GoogleMap {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#InputSpot {
+    z-index: 10;
+}
+
+#InputSpot div {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.438);
+}
