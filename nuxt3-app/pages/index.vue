@@ -1,7 +1,7 @@
 <template>
     <div>
         ひんやりあるばむ
-        <TermBox/>
+        
     </div>
 </template>
 
