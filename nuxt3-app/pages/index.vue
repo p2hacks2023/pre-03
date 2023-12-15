@@ -70,12 +70,45 @@ export default {
         // Initialize Cloud Firestore and get a reference to the service
         this.storage = getStorage(app);
         this.getDatas();
+        // Initialize Firebase Authentication and get a reference to the service
+        this.auth = getAuth(app);
+        onAuthStateChanged(this.auth, (user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/auth.user
+                const uid = user.uid;
+                // ...
+            } else {
+                console.log("signed out!");
+                // User is signed out
+                // ...
+            }
+        });
     },
     methods: {
-        handleResize: function () {
-            // resizeのたびにこいつが発火するので、ここでやりたいことをやる
-            this.width = window.innerWidth;
-            this.height = window.innerHeight;
+        updateData: function(){
+            const imgPath = auth.currentUser.userid + "_" + Date.now();
+            this.addData(imgPath);
+            this.upload("", imgPath);
+        },
+        addData: function (imageUrl) {
+            addDoc(collection(this.db, "hinnyaris"), {
+                count: 0,
+                evaluationValue: 0,
+                imageUrl: imageUrl,
+                mapUrl: "test",
+                objectName: "test",
+                spotName: "test",
+                userid: auth.currentUser.userid
+            });
+        },
+        evaluateHinnyari: async function () {
+            const washingtonRef = doc(this.db, "hinnyaris", "");
+
+            await updateDoc(washingtonRef, {
+                count: 1,//+1する
+                evaluationValue: 1//ずっと足す
+            });
         },
         getDatas: async function () {
             const querySnapshot = await getDocs(collection(this.db, "hinnyaris"));
@@ -83,11 +116,25 @@ export default {
                 // doc.data() is never undefined for query doc snapshots
                 // console.log(doc.id, " => ", doc.data());
                 this.hinnyaris.push(doc.data());
+                console.log(doc.id, " => ", doc.data());
+                const imageUrl = doc.data().imageUrl;
+                this.download(imageUrl);
             });
         },
-        download: function () {
-            const filename = "いも.jpg";
-            const pathReference = ref(this.storage, 'hinnyaris/' + filename);
+        delete: async function () {
+            const docname = "2QKnhbHen7RPO6hEwUzI";
+            await deleteDoc(doc(this.db, "hinnyaris", docname));
+        },
+        upload: function (props, imagePath) {
+            //アップロードしたい画像の情報を取得。
+            const file = props.target.files[0];
+            const storageRef = ref(this.storage, 'hinnyaris/' + imagePath);
+            uploadBytes(storageRef, file).then((snapshot) => {
+                console.log('Uploaded a blob or file!');
+            });
+        },
+        download: function (imageUrl) {
+            const pathReference = ref(this.storage, 'hinnyaris/' + imageUrl);
             getDownloadURL(pathReference)
                 .then((url) => {
                     // This can be downloaded directly:
@@ -126,7 +173,6 @@ export default {
         }
     }
 }
-
 </script>
 
 <style lang="scss" scoped>
