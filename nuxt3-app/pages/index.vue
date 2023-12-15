@@ -4,7 +4,7 @@
         <div class="post-list">
             <div v-for="(hinnyari, index) in hinnyaris" :key="index">
                 <HinnyariBox @click="view(index)" class="HinnyariBox" :name="hinnyari.spotName"
-                    :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F'+hinnyari.imageUrl+'?alt=media&token=b333791f-cc8a-45ac-8a0d-881abbaf5420'"
+                    :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F'+hinnyari.imageUrl+'?alt=media'"
                     :evaluation-sum-value="hinnyari.evaluationValue"
                     :evaluation-count="hinnyari.evaluationCount" />
             </div>

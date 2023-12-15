@@ -48,16 +48,16 @@ export default {
             this.image = prop.target.files[0];
             this.imageUrl =  URL.createObjectURL(this.image);
         },
-        post: function () {
+        post: async function () {
             const imgPath = "_" + Date.now();
-            this.upload(imgPath);
-            this.addData(imgPath);
+            await this.upload(imgPath);
+            await this.addData(imgPath);
             console.log(this.image);
             console.log("success post");
-            // reloadNuxtApp();
+            reloadNuxtApp();
         },
-        addData: function (imageUrl) {
-            addDoc(collection(this.db, "hinnyaris"), {
+        addData: async function (imageUrl) {
+            await addDoc(collection(this.db, "hinnyaris"), {
                 count: 0,
                 evaluationValue: 0,
                 imageUrl: imageUrl,
@@ -67,12 +67,12 @@ export default {
                 userid: "test"//this.auth.currentUser.userid
             });
         },
-        upload: function (imagePath) {
+        upload: async function (imagePath) {
             //アップロードしたい画像の情報を取得。
             const file = this.image;
             const storageRef = ref(this.storage, 'hinnyaris/' + imagePath);
 
-            uploadBytes(storageRef, file).then((snapshot) => {
+            await uploadBytes(storageRef, file).then((snapshot) => {
                 console.log('Uploaded a blob or file!');
             });
         }
