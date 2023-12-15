@@ -27,28 +27,15 @@
 
 
 <script>
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
 
 export default {
-    name: "App",
-    data: () => {
-        return {
-            hinnyaris: [],
-            db: undefined,
-            storage: undefined,
-            width: 0,
-            height: 0,
-            isSelectMap: false,
-            isInputSpot: true,
-        }
-    },
+<<<<<<<<< Temporary merge branch 1
+    name: "Home",
+    db: undefined,
+    storage: undefined,
+    img_url: undefined,
     mounted() {
-        window.addEventListener('resize', this.handleResize);
-        this.width = window.innerWidth;
-        this.height = window.innerHeight;
-
         const firebaseConfig = {
             apiKey: "AIzaSyDb6Y-8ischpWY57SxMxk3TYD76EDtA9ZY",
             authDomain: "hinnyari-album.firebaseapp.com",
@@ -66,20 +53,38 @@ export default {
         this.db = getFirestore(app);
         // Initialize Cloud Firestore and get a reference to the service
         this.storage = getStorage(app);
-        this.getDatas();
     },
     methods: {
-        handleResize: function () {
-            // resizeのたびにこいつが発火するので、ここでやりたいことをやる
-            this.width = window.innerWidth;
-            this.height = window.innerHeight;
+        addData: function () {
+            // Add a new document in collection "cities"
+            addDoc(collection(this.db, "hinnyaris"), {
+                // count: を加算するやつ書く
+                evaluationValue: 1,
+                imageUrl: "test",
+                mapUrl: "test",
+                objectName: "test",
+                spotName: "test"
+            });
         },
         getDatas: async function () {
-            const querySnapshot = await getDocs(collection(this.db, "hinnyaris"));
+            const querySnapshot = await getDocs(collection(db, "hinnyaris"));
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
-                // console.log(doc.id, " => ", doc.data());
-                this.hinnyaris.push(doc.data());
+                console.log(doc.id, " => ", doc.data());
+            });
+        },
+        delete: async function () {
+            const docname = "2QKnhbHen7RPO6hEwUzI";
+            await deleteDoc(doc(this.db, "hinnyaris", docname));
+        },
+        upload: function (props) {
+            //アップロードしたい画像の情報を取得。
+            const file = props.target.files[0];
+            //画像ファイルのURLを取得。
+            this.img_url = URL.createObjectURL(file);// いらないけど、ファイルurlはたぶんdbに格納するので取っておく
+            const storageRef = ref(this.storage, 'hinnyaris/' + file.name);
+            uploadBytes(storageRef, file).then((snapshot) => {
+                console.log('Uploaded a blob or file!');
             });
         },
         download: function () {
@@ -98,25 +103,18 @@ export default {
 
                     // Or inserted into an <img> element
                     const img = document.getElementById('img_url');
-                    // img.src = url;
+                    img.src = url;
                 })
                 .catch((error) => {
                     // Handle any errors
                 });
-        },
-        postPopUp: function() {
-            this.isSelectMap = true;
-        },
-        postPopUpClose: function() {
-            this.isSelectMap = false;
-        },
-        inputSpot: function() {
-            this.isSelectMap = false;
-            this.isInputSpot = true;
         }
-    }
-}
 
+    }
+=========
+    name: "Home"
+>>>>>>>>> Temporary merge branch 2
+}
 </script>
 
 <style lang="scss" scoped>

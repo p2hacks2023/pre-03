@@ -1,0 +1,62 @@
+.PostPopUp {
+    position: relative;
+    width: 360px;
+    height: 250px;
+    padding: 20px 20px 0 20px;
+    border-radius: 10px;
+    background-color: #D6DCEC;
+    box-shadow: 2px 4px 5px rgb(192, 192, 192);
+}
+
+.select-file {
+    position: relative;
+}
+
+input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 20px;
+}
+
+.CloseButton {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+}
+
+img {
+    width: 150px;
+    height: 90px;
+    border-radius: 5px;
+}
+
+.select-img {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: 110px;
+    margin-left: 10px;
+}
+
+.mini-buttons>*>*,
+.mini-buttons>* {
+    width: 120px;
+    height: 25px;
+    margin: 15px 0;
+}
+
+.Button {
+    margin: 30px auto;
+    width: 300px;
+    height: 30px;
+}
+
+.InputBox {
+    margin: 10px auto 45px auto;
+    width: 300px;
+    height: 0px;
+}

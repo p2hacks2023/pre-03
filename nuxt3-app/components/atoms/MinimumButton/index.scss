@@ -1,0 +1,16 @@
+div {
+    width: auto;
+    height: auto;
+    background-color: #8F8F8F;
+    color: #FCFCFC;
+    border-radius: 5px;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+div:hover {
+    cursor: pointer;
+}

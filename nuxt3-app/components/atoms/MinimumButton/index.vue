@@ -1,16 +1,12 @@
 <template>
-<<<<<<< HEAD
     <div>
-=======
-    <div class="button">
->>>>>>> feat/PostPopUpComponent
         <slot />
     </div>
 </template>
 
 <script>
 export default {
-    name: "Button"
+    name: "MinimumButton"
 }
 </script>
 
