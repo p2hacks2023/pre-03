@@ -1,7 +1,7 @@
 <template>
     <div>
         ひんやりあるばむ
-        <OpinionBox/>
+        <TermBox/>
     </div>
 </template>
 
