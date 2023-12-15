@@ -3,9 +3,10 @@
         <div id="header">ひんやりあるばむ</div>
         <div class="post-list">
             <div v-for="n in 5">
-                <div v-for="hinnyari in hinnyaris">
-                    <HinnyariBox class="HinnyariBox" :name="hinnyari.spotName" :imgPath="'images/testImage.jpg'"
-                        :evaluation-sum-value="hinnyari.evaluationValue" :evaluation-count="hinnyari.evaluationCount" />
+                <div v-for="(hinnyari, index) in hinnyaris" :key="index">
+                    <HinnyariBox @click="view(index)" class="HinnyariBox" :name="hinnyari.spotName"
+                        :imgPath="'images/testImage.jpg'" :evaluation-sum-value="hinnyari.evaluationValue"
+                        :evaluation-count="hinnyari.evaluationCount" />
                 </div>
             </div>
         </div>
@@ -17,9 +18,11 @@
             <AppPagePostPopUp @clickClose="postPopUpClose" @clickOk="inputSpot" />
         </div>
         <div v-if="isInputSpot" id="InputSpot">
-            <GoogleMap class="GoogleMap" :width="width+'px'" :height="height+'px'" />
+            <GoogleMap class="GoogleMap" :width="width + 'px'" :height="height + 'px'" />
             <div class="fade"></div>
-            <PostPopUp class="PostPopUp" @clickClose="inputSpotClose"  />
+            <Transition>
+                <PostPopUp class="PostPopUp" @clickClose="inputSpotClose" />
+            </Transition>
         </div>
         <PostButton id="PostButton" @click="postPopUp" />
         <Menu class="Menu" />
@@ -104,19 +107,22 @@ export default {
                     // Handle any errors
                 });
         },
-        postPopUp: function() {
+        postPopUp: function () {
             this.isSelectMap = true;
         },
-        postPopUpClose: function() {
+        postPopUpClose: function () {
             this.isSelectMap = false;
         },
-        inputSpot: function() {
+        inputSpot: function () {
             this.isSelectMap = false;
             this.isInputSpot = true;
         },
-        inputSpotClose: function() {
+        inputSpotClose: function () {
             this.isSelectMap = true;
             this.isInputSpot = false;
+        },
+        view: function (index) {
+            console.log(index);
         }
     }
 }

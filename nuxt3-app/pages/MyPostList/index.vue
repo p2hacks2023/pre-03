@@ -4,8 +4,9 @@
 
     </div>
     <div v-else>
-      
+      <NoLoginButtons />
     </div>
+    <Menu class="Menu" />
   </div>
 </template>
 

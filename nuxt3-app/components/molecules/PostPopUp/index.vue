@@ -7,7 +7,7 @@
                     <input type="file">
                     <MinimumButton>画像を選択</MinimumButton>
                 </div>
-                <MinimumButton>スポット選択へ戻る</MinimumButton>
+                <!-- <MinimumButton>スポット選択へ戻る</MinimumButton> -->
             </div>
             <img :src="imgPath" alt="選択画像">
         </div>

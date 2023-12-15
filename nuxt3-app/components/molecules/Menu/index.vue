@@ -1,7 +1,9 @@
 <template>
     <div class="Menu">
         <router-link to="/">
-            <font-awesome-icon :icon="['fas', 'house']" class="icon home" />
+            <div class="side-icon">
+                <font-awesome-icon :icon="['fas', 'house']" class="icon home" />
+            </div>
         </router-link>
         <router-link to="/MyPostList">
             <div class="circle icon">
@@ -9,7 +11,9 @@
             </div>
         </router-link>
         <router-link to="/Game">
-            <font-awesome-icon :icon="['fas', 'gamepad']" class="icon game" />
+            <div class="side-icon">
+                <font-awesome-icon :icon="['fas', 'gamepad']" class="icon game" />
+            </div>
         </router-link>
     </div>
 </template>

@@ -1,6 +1,7 @@
 <template>
     <div>
         白熊のゲームページ
+        <Menu class="Menu" />
     </div>
 </template>
 
