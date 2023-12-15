@@ -2,12 +2,11 @@
     <div id="App" :class="isSelectMap ? 'noScroll' : ''">
         <div id="header">ひんやりあるばむ</div>
         <div class="post-list">
-            <div v-for="n in 5">
-                <div v-for="(hinnyari, index) in hinnyaris" :key="index">
-                    <HinnyariBox @click="view(index)" class="HinnyariBox" :name="hinnyari.spotName"
-                        :imgPath="'images/testImage.jpg'" :evaluation-sum-value="hinnyari.evaluationValue"
-                        :evaluation-count="hinnyari.evaluationCount" />
-                </div>
+            <div v-for="(hinnyari, index) in hinnyaris" :key="index">
+                <HinnyariBox @click="view(index)" class="HinnyariBox" :name="hinnyari.spotName"
+                    :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F'+hinnyari.imageUrl+'?alt=media&token=b333791f-cc8a-45ac-8a0d-881abbaf5420'"
+                    :evaluation-sum-value="hinnyari.evaluationValue"
+                    :evaluation-count="hinnyari.evaluationCount" />
             </div>
         </div>
         <div v-if=false id="HinnyariPopUpBox">
@@ -21,7 +20,7 @@
             <GoogleMap class="GoogleMap" :width="width + 'px'" :height="height + 'px'" />
             <div class="fade"></div>
             <Transition>
-                <PostPopUp class="PostPopUp" @clickClose="inputSpotClose" />
+                <PostPopUp class="PostPopUp" :storage="storage" :auth="auth" :db="db" @clickClose="inputSpotClose" />
             </Transition>
         </div>
         <PostButton id="PostButton" @click="postPopUp" />
@@ -33,7 +32,9 @@
 <script>
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 export default {
     name: "App",
     data: () => {
@@ -69,6 +70,7 @@ export default {
         this.db = getFirestore(app);
         // Initialize Cloud Firestore and get a reference to the service
         this.storage = getStorage(app);
+        console.log("sucess: "+this.storage);
         this.getDatas();
         // Initialize Firebase Authentication and get a reference to the service
         this.auth = getAuth(app);
@@ -86,22 +88,6 @@ export default {
         });
     },
     methods: {
-        updateData: function(){
-            const imgPath = auth.currentUser.userid + "_" + Date.now();
-            this.addData(imgPath);
-            this.upload("", imgPath);
-        },
-        addData: function (imageUrl) {
-            addDoc(collection(this.db, "hinnyaris"), {
-                count: 0,
-                evaluationValue: 0,
-                imageUrl: imageUrl,
-                mapUrl: "test",
-                objectName: "test",
-                spotName: "test",
-                userid: auth.currentUser.userid
-            });
-        },
         evaluateHinnyari: async function () {
             const washingtonRef = doc(this.db, "hinnyaris", "");
 
@@ -116,43 +102,11 @@ export default {
                 // doc.data() is never undefined for query doc snapshots
                 // console.log(doc.id, " => ", doc.data());
                 this.hinnyaris.push(doc.data());
-                console.log(doc.id, " => ", doc.data());
-                const imageUrl = doc.data().imageUrl;
-                this.download(imageUrl);
             });
         },
         delete: async function () {
             const docname = "2QKnhbHen7RPO6hEwUzI";
             await deleteDoc(doc(this.db, "hinnyaris", docname));
-        },
-        upload: function (props, imagePath) {
-            //アップロードしたい画像の情報を取得。
-            const file = props.target.files[0];
-            const storageRef = ref(this.storage, 'hinnyaris/' + imagePath);
-            uploadBytes(storageRef, file).then((snapshot) => {
-                console.log('Uploaded a blob or file!');
-            });
-        },
-        download: function (imageUrl) {
-            const pathReference = ref(this.storage, 'hinnyaris/' + imageUrl);
-            getDownloadURL(pathReference)
-                .then((url) => {
-                    // This can be downloaded directly:
-                    const xhr = new XMLHttpRequest();
-                    xhr.responseType = 'blob';
-                    xhr.onload = (event) => {
-                        const blob = xhr.response;
-                    };
-                    xhr.open('GET', url);
-                    xhr.send();
-
-                    // Or inserted into an <img> element
-                    const img = document.getElementById('img_url');
-                    // img.src = url;
-                })
-                .catch((error) => {
-                    // Handle any errors
-                });
         },
         postPopUp: function () {
             this.isSelectMap = true;
