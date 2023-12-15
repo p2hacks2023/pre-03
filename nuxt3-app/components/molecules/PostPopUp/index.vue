@@ -50,7 +50,7 @@ export default {
             this.imageUrl =  URL.createObjectURL(this.image);
         },
         post: async function () {
-            const imgPath = "_" + Date.now();
+            const imgPath = this.auth.currentUser.uid + "_" + Date.now();
             await this.upload(imgPath);
             await this.addData(imgPath);
             console.log(this.image);
@@ -59,12 +59,12 @@ export default {
         },
         addData: async function (imageUrl) {
             await addDoc(collection(this.db, "hinnyaris"), {
-                count: 0,
+                evaluationCount: 0,
                 evaluationValue: 0,
                 imageUrl: imageUrl,
                 mapUrl: "test",
                 spotName: this.spotName,
-                userid: "",//this.auth.currentUser.uid,
+                userid: this.auth.currentUser.uid,
             });
         },
         upload: async function (imagePath) {

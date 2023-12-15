@@ -23,14 +23,19 @@ export default {
     },
     data: () => {
         return {
-            evalValue: 0,
+            evalValue: "",
             evalIntValue: 0,
         }
     },
     mounted() {
-        const val = this.evaluationSumValue / this.evaluationCount;
-        this.evalValue = Math.round(val * 100) / 100;
-        this.evalIntValue = Math.floor(val);
+        if (this.evaluationCount == 0) {
+            this.evalValue = "未評価";
+        }
+        else {
+            const val = this.evaluationSumValue / this.evaluationCount;
+            this.evalValue = Math.round(val * 100) / 100;
+            this.evalIntValue = Math.floor(val);
+        }
     }
 }
 </script>

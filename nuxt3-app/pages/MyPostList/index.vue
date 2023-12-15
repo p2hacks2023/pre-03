@@ -10,13 +10,14 @@
   </div>
     <div class="links">
         <button @click="logout" class="button--green">Logout</button>
+        <button @click="getDatas">getDatas</button>
     </div>
 </template>
 
 <script>
 import { initializeApp } from "firebase/app";
 import { getAuth, signOut } from "firebase/auth";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
 export default {
     name: "MyPostList",
     auth: undefined,
@@ -51,8 +52,9 @@ export default {
             });
         },
         getDatas: async function () {
-            // 自分のデータだけとってくるようにあとで変更！
-            const querySnapshot = await getDocs(collection(db, "hinnyaris"));
+            console.log("getData");
+            const q = query(collection(this.db, "hinnyaris"), where("userid", "==", this.auth.currentUser.uid))
+            const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
                 console.log(doc.id, " => ", doc.data());
