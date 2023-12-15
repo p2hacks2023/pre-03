@@ -11,7 +11,7 @@
             </div>
             <img :src="imageUrl" alt="選択画像">
         </div>
-        <InputBox class="InputBox" placeholder="商品名・スポット名" @onchange="(val) => { console.log(val) }" />
+        <InputBox class="InputBox" placeholder="商品名・スポット名" @onchange="(val) => { this.spotName = val }" />
         <Button class="Button" @click="post">投稿</Button>
     </div>
 </template>
@@ -38,6 +38,7 @@ export default {
         return {
             image: undefined,
             imageUrl: undefined,
+            spotName: "",
         }
     },
     mounted() {
@@ -49,22 +50,23 @@ export default {
             this.imageUrl =  URL.createObjectURL(this.image);
         },
         post: function () {
-            const imgPath = "_" + Date.now();
+            // const imgPath = this.auth.currentUser.uid + "_" + Date.now() + ".png";
+            const imgPath = this.auth.currentUser.uid + ".jpg";//this.image.file.name;
+            console.log(imgPath);
             this.upload(imgPath);
             this.addData(imgPath);
             console.log(this.image);
             console.log("success post");
-            // reloadNuxtApp();
+            reloadNuxtApp();
         },
         addData: function (imageUrl) {
             addDoc(collection(this.db, "hinnyaris"), {
-                count: 0,
+                evaluationCount: 0,
                 evaluationValue: 0,
                 imageUrl: imageUrl,
                 mapUrl: "test",
-                objectName: "test",
-                spotName: "test",
-                userid: "test"//this.auth.currentUser.userid
+                spotName: this.spotName,
+                userid: "",//this.auth.currentUser.uid,
             });
         },
         upload: function (imagePath) {
