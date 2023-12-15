@@ -9,7 +9,7 @@
                 <Button class="Button">新規作成</Button>
             </routerLink>
             <hr />
-            <GoogleAuthButton @click="loginwithgoogle" class="GoogleLoginButton" />
+            <GoogleLoginButton @click="loginWithGoogle" class="GoogleLoginButton" />
         </div>
     </div>
 </template>
@@ -24,9 +24,9 @@ export default {
         return {
             email: "",
             password: "",
-            auth: undefined,
         }
     },
+    auth: undefined,
     mounted() {
         const firebaseConfig = {
             apiKey: "AIzaSyDb6Y-8ischpWY57SxMxk3TYD76EDtA9ZY",
@@ -46,7 +46,6 @@ export default {
     },
     methods: {
         login: function () {
-            console.log(this.auth);
             signInWithEmailAndPassword(this.auth, this.email, this.password)
                 .then((userCredential) => {
                     // Signed in 
@@ -57,9 +56,11 @@ export default {
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
+                    console.log(errorCode+", "+errorMessage);
                 });
         },
-        loginwithgoogle: function () {
+        loginWithGoogle: function () {
+            console.log(this.auth);
             const provider = new GoogleAuthProvider();
             signInWithRedirect(this.auth, provider);
         }
