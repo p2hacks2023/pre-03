@@ -1,6 +1,6 @@
 <template>
     <div class="PostPopUp">
-        <CloseButton class="CloseButton" />
+        <CloseButton class="CloseButton" @click="this.$emit('clickClose')" />
         <div class="select-img">
             <div class="mini-buttons">
                 <div class="select-file">
@@ -12,7 +12,7 @@
             <img :src="imgPath" alt="選択画像">
         </div>
         <InputBox class="InputBox" placeholder="商品名・スポット名" @onchange="(val) => { console.log(val) }" />
-        <Button class="Button">投稿</Button>
+        <Button class="Button" @click="post">投稿</Button>
     </div>
 </template>
 
@@ -72,6 +72,10 @@ export default {
                 console.log('Uploaded a blob or file!');
             });
         },
+        post: function() {
+            console.log("post");
+            
+        }
     }
 }
 </script>

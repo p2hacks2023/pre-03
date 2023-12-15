@@ -55,7 +55,9 @@ export default {
                     latlng: latlng,
                 }
             }
-            iframeElement.contentWindow.postMessage(message, "*");
+            for(let i=0; i<3; i++) {
+                setTimeout(i*300, () => {iframeElement.contentWindow.postMessage(message, "*")});
+            }
         }
     }
 

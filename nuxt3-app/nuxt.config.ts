@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   nitro: {
     preset: "firebase",
   },
@@ -59,7 +59,7 @@ export default defineNuxtConfig({
   ],
   vite: {
     define: {
-      "process.env.DEBUG": false,
+      "process.env.DEBUG": true,
     },
     // for HMR
     server: {

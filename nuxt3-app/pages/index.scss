@@ -45,6 +45,7 @@
 }
 
 .GoogleMap {
+    z-index: 3;
     position: fixed;
     top: 0;
     left: 0;
@@ -54,12 +55,23 @@
     z-index: 10;
 }
 
-#InputSpot div {
+.fade {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 11;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.438);
+    background-color: #49494980;
+}
+
+.PostPopUp {
+    position: fixed;
+    left: calc(50vw - 360px / 2);
+    bottom: 50px;
+    z-index: 20;
+}
+
+.Menu {
+    z-index: 2;
 }

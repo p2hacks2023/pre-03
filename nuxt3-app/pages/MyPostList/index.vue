@@ -1,12 +1,26 @@
-<template></template>
+<template>
+  <div>
+    <div v-if="isLogin">
+
+    </div>
+    <div v-else>
+      
+    </div>
+  </div>
+</template>
 
 <script>
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 export default {
-name: "MyPostList",
-  db: undefined,
+  name: "MyPostList",
+  data: () => {
+    return {
+      db: undefined,
+      isLogin: false,
+    }
+  },
   mounted() {
     const firebaseConfig = {
       apiKey: "AIzaSyDb6Y-8ischpWY57SxMxk3TYD76EDtA9ZY",
@@ -26,7 +40,7 @@ name: "MyPostList",
   },
   methods: {
     getDatas: async function () {
-        // 自分のデータだけとってくるようにあとで変更！
+      // 自分のデータだけとってくるようにあとで変更！
       const querySnapshot = await getDocs(collection(db, "hinnyaris"));
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots

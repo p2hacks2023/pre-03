@@ -1,9 +1,5 @@
 <template>
-<<<<<<< HEAD
     <div>
-=======
-    <div class="button">
->>>>>>> feat/PostPopUpComponent
         <slot />
     </div>
 </template>

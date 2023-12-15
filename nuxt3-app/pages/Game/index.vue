@@ -1,5 +1,7 @@
 <template>
-
+    <div>
+        白熊のゲームページ
+    </div>
 </template>
 
 <script>
