@@ -1,16 +1,12 @@
 <template>
-  <div class="box">
-      <div class="scrollbar">
-        <div class="scrollbar__box">
+  <div class="margin">
           <div v-for="term in terms">
             <div class="heading">
               {{ term.heading }}
             </div>
             <p>{{ term.text }}</p>
             <br/>
-          </div>
-        </div>
-    </div>
+            </div>
   </div>
 </template>
 
