@@ -2,6 +2,7 @@
     <div class="HinnyariBox">
         <img :src="imgPath" alt="ひんやり画像">
         <div>
+            <font-awesome-icon :icon="['fas', 'trash']" class="icon" />
             <p>{{ name }}</p>
             <Evaluation :evaluation-sum-value="evaluationSumValue" :evaluation-count="evaluationCount" />
         </div>
