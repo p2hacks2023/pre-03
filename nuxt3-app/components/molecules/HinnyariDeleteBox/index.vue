@@ -2,7 +2,7 @@
     <div class="HinnyariBox">
         <img :src="imgPath" alt="ひんやり画像">
         <div>
-            <font-awesome-icon :icon="['fas', 'trash']" class="icon" />
+            <font-awesome-icon :icon="['fas', 'trash']" class="icon" @click="this.$emit('deleteClick')" />
             <p>{{ name }}</p>
             <Evaluation :evaluation-sum-value="evaluationSumValue" :evaluation-count="evaluationCount" />
         </div>

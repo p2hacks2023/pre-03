@@ -3,7 +3,7 @@
         <div v-if="isLogin">
             <div class="post-list">
                 <div v-for="(hinnyari, index) in myHinnyaris" :key="index">
-                    <HinnyariBox @click="view(index)" class="HinnyariBox" :name="hinnyari.spotName"
+                    <HinnyariDeleteBox @deleteClick="deleteHinnyari(index)" class="HinnyariBox" :name="hinnyari.spotName"
                         :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F' + hinnyari.imageUrl + '?alt=media'"
                         :evaluation-sum-value="hinnyari.evaluationValue" :evaluation-count="hinnyari.evaluationCount" />
                 </div>
@@ -20,9 +20,11 @@
 </template>
 
 <script>
+import { reloadNuxtApp } from "nuxt/app";
 import { initializeApp } from "firebase/app";
 import { getAuth, signOut } from "firebase/auth";
-import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
+import { getFirestore, collection, getDocs, deleteDoc, doc, query, where } from "firebase/firestore";
+
 export default {
     name: "MyPostList",
     data: () => {
@@ -31,6 +33,7 @@ export default {
             auth: undefined,
             db: undefined,
             myHinnyaris: [],
+            myHinnyarisId: [],
         }
     },
     async mounted() {
@@ -78,9 +81,17 @@ export default {
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
                 console.log(doc.id, " => ", doc.data());
+                this.myHinnyarisId.push(doc.id);
                 this.myHinnyaris.push(doc.data());
             });
-        }
+        },
+        deleteHinnyari: async function(index) {
+            console.log(this.myHinnyarisId[index]);
+            const docname = this.myHinnyarisId[index];
+            await deleteDoc(doc(this.db, "hinnyaris", docname));
+            console.log(index);
+            reloadNuxtApp();
+        },
     }
 }
 </script>

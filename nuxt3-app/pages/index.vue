@@ -31,8 +31,8 @@
 
 <script>
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getFirestore, collection, getDocs, doc } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
@@ -104,10 +104,6 @@ export default {
                 // console.log(doc.id, " => ", doc.data());
                 this.hinnyaris.push(doc.data());
             });
-        },
-        delete: async function () {
-            const docname = "2QKnhbHen7RPO6hEwUzI";
-            await deleteDoc(doc(this.db, "hinnyaris", docname));
         },
         postPopUp: function () {
             this.isSelectMap = true;
