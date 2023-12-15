@@ -7,9 +7,11 @@
 <script>
 import { initializeApp } from "firebase/app";
 import { getAuth, signOut } from "firebase/auth";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 export default {
     name: "MyPostList",
     auth: undefined,
+    db: undefined,
     mounted() {
         const firebaseConfig = {
             apiKey: "AIzaSyDb6Y-8ischpWY57SxMxk3TYD76EDtA9ZY",
@@ -24,6 +26,8 @@ export default {
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
+        // Initialize Cloud Firestore and get a reference to the service
+        this.db = getFirestore(app);
         // Initialize Firebase Authentication and get a reference to the service
         this.auth = getAuth(app);
     },
@@ -36,7 +40,15 @@ export default {
                 // An error ocurred
                 // ...
             });
-        }
+        },
+        getDatas: async function () {
+                // 自分のデータだけとってくるようにあとで変更！
+                const querySnapshot = await getDocs(collection(db, "hinnyaris"));
+                querySnapshot.forEach((doc) => {
+                    // doc.data() is never undefined for query doc snapshots
+                    console.log(doc.id, " => ", doc.data());
+                });
+            }
     }
 }
 </script>
