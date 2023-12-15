@@ -1,0 +1,77 @@
+#App {}
+
+#header {
+    width: min(100vw, 500px);
+    height: 50px;
+    background-color: skyblue;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+}
+
+#HinnyariPopUp {
+    position: absolute;
+    top: calc(50vh - 350px / 2);
+    left: calc(50vw - 330px / 2);
+}
+
+#HinnyariPopUpBox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    background-color: #49494980;
+}
+
+.HinnyariBox {
+    margin: 20px auto;
+}
+
+.post-list {
+    padding-top: 10px;
+    padding-bottom: 100px;
+}
+
+#PostButton {
+    position: fixed;
+    bottom: 100px;
+    right: 40px;
+}
+
+.noScroll {
+    overflow-y: hidden;
+}
+
+.GoogleMap {
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#InputSpot {
+    z-index: 10;
+}
+
+.fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    width: 100vw;
+    height: 100vh;
+    background-color: #49494980;
+}
+
+.PostPopUp {
+    position: fixed;
+    left: calc(50vw - 360px / 2);
+    bottom: 50px;
+    z-index: 20;
+}
+
+.Menu {
+    z-index: 2;
+}

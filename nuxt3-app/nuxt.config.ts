@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   nitro: {
     preset: "firebase",
   },
@@ -27,13 +27,18 @@ export default defineNuxtConfig({
           href: "/favicon.ico",
         },
       ],
-      script: [],
+      script: [
+        {
+          src: 'https://kit.fontawesome.com/8fec9e743f.js',
+          crossorigin: 'anonymous',
+        },
+      ],
     },
   },
   css: [
     "~/assets/style/reset.css",
     "vuetify/lib/styles/main.sass",
-    "@fortawesome/fontawesome-svg-core/styles.css",
+    '@fortawesome/fontawesome-svg-core/styles.css',
   ],
   components: [
     {
@@ -49,9 +54,12 @@ export default defineNuxtConfig({
       "vuetify",
     ],
   },
+  plugins: [
+    '@/plugins/fontawesome.ts'
+  ],
   vite: {
     define: {
-      "process.env.DEBUG": false,
+      "process.env.DEBUG": true,
     },
     // for HMR
     server: {
@@ -60,4 +68,7 @@ export default defineNuxtConfig({
       },
     },
   },
+  modules: [
+    "nuxt-rating"
+  ]
 });

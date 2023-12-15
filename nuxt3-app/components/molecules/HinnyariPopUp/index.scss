@@ -1,0 +1,42 @@
+.HinnyariPopUp {
+    position: relative;
+    width: 330px;
+    height: 350px;
+    background-color: #D6DCEC;
+    padding: 30px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 7px rgb(110, 110, 110);
+}
+
+.wrap {
+    width: 250px;
+    margin: auto;
+}
+
+img {
+    width: 250px;
+    height: 144px;
+    border-radius: 5px;
+}
+
+.name {
+    height: 45px;
+}
+
+.Evaluation {
+    margin: auto 0 auto calc(100% - 135px);
+}
+
+.GoogleMapButton {
+    margin: 20px auto;
+}
+
+.CloseButton {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.wrap:hover {
+    cursor: pointer;
+}
