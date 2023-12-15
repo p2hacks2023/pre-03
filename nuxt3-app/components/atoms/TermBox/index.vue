@@ -5,24 +5,24 @@
         <div class="heading">
           {{ term.heading }}
         </div>
-          <ol>
-            <div class="margin_article">
-              <div v-for="i in Object.keys(term.text).length">       
-                <li>
-                  {{ term.text[i-1] }}
-                </li>          
-              </div>
-              <div class="margin_article">
-                <ol>
-                  <div v-for="i in Object.keys(term.indent).length">
-                    <li>
-                      {{ term.indent[i-1] }}
-                    </li>
-                  </div>
-                </ol>
-              </div>
+        <ul>
+          <div class="margin_article">
+            <div v-for="i in Object.keys(term.text).length">       
+              <li>
+                {{ term.text[i-1] }}
+              </li>          
             </div>
-          </ol>
+            <div class="margin_article">
+              <ol>
+                <div v-for="i in Object.keys(term.indent).length">
+                  <li>
+                    {{ term.indent[i-1] }}
+                  </li>
+                </div>
+              </ol>
+            </div>
+          </div>
+        </ul>
         <br/>
       </div>
     </div>
