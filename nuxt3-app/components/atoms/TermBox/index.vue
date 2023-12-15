@@ -5,11 +5,8 @@
         <div class="heading">
           {{ term.heading }}
         </div>
-        <div v-for="text in term.text">
-          {{ text.main1 }}
-          {{ text.indent1 }}
-        </div>
-        <br/><br/>
+        <p>{{ term.text }}</p>
+        <br/>
       </div>
     </div>
   </div>
@@ -21,7 +18,6 @@ export default {
   name: "TermBox",
   data: () => ({
     terms: term,
-    texts: term.text
   })
 }
 </script>
