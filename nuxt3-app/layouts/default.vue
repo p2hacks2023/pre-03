@@ -32,7 +32,7 @@
   main {
     width: 500px;
     position: absolute;
-    right: 0;
+    right: calc(50vw - 500px / 2);
   }
 }
 </style>
