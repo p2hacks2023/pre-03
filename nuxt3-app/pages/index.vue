@@ -81,7 +81,7 @@ export default {
         // Initialize Cloud Firestore and get a reference to the service
         this.storage = getStorage(app);
         console.log("sucess: "+this.storage);
-        this.getDatas();
+        // this.getDatas();
         // Initialize Firebase Authentication and get a reference to the service
         this.auth = getAuth(app);
         onAuthStateChanged(this.auth, (user) => {
@@ -116,14 +116,15 @@ export default {
                 evaluationValue: 1//ずっと足す
             });
         },
-        getDatas: async function () {
-            const querySnapshot = await getDocs(collection(this.db, "hinnyaris"));
-            querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
-                this.hinnyaris.push(doc.data());
-            });
-        },
+        // 自動更新されるようになったのでgetDatasは不必要
+        // getDatas: async function () {
+        //     const querySnapshot = await getDocs(collection(this.db, "hinnyaris"));
+        //     querySnapshot.forEach((doc) => {
+        //         // doc.data() is never undefined for query doc snapshots
+        //         console.log(doc.id, " => ", doc.data());
+        //         this.hinnyaris.push(doc.data());
+        //     });
+        // },
         postPopUp: function () {
             this.isSelectMap = true;
         },
