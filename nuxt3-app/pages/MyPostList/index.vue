@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import { reloadNuxtApp } from "nuxt/app";
 import { initializeApp } from "firebase/app";
 import { getAuth, signOut } from "firebase/auth";
 import { getFirestore, collection, getDocs, deleteDoc, doc, query, where } from "firebase/firestore";
+import { getStorage, ref, deleteObject } from "firebase/storage";
 
 export default {
     name: "MyPostList",
@@ -34,6 +34,7 @@ export default {
             db: undefined,
             myHinnyaris: [],
             myHinnyarisId: [],
+            storage: undefined,
         }
     },
     async mounted() {
@@ -54,6 +55,9 @@ export default {
         this.db = getFirestore(app);
         // Initialize Firebase Authentication and get a reference to the service
         this.auth = getAuth(app);
+
+        this.storage = getStorage();
+
         setTimeout(this.checkLogin, 700);
     },
     methods: {
@@ -87,6 +91,14 @@ export default {
         },
         deleteHinnyari: async function(index) {
             console.log(this.myHinnyarisId[index]);
+
+            const desertRef = ref(this.storage, "hinnyaris/" + this.myHinnyaris[index].imageUrl);
+            deleteObject(desertRef).then(() => {
+                // File deleted successfully
+            }).catch((error) => {
+                // an error occurred
+            });
+
             const docname = this.myHinnyarisId[index];
             await deleteDoc(doc(this.db, "hinnyaris", docname));
             this.myHinnyaris.splice(index, 1);

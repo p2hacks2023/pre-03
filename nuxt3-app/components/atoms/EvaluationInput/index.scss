@@ -1,26 +1,24 @@
 .EvaluationInput {
-    width: 220px;
-    height: 225px;
+    position: relative;
+    width: 330px;
+    height: 350px;
     background-color: #A8D4FC;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
 }
 
 .Button {
-    width: 140px;
-    height: 30px;
-    font-size: 10px;
+    width: 250px;
+    height: 35px;
+    font-size: 16px;
     border-radius: 20px;
 }
 
 .input {
-    margin: 0 auto;
+    margin: 0 auto 0 auto;
     background-color: #D9D9D9;
     border-radius: 10px;
-    width: 190px;
-    height: 110px;
+    width: 290px;
+    height: 145px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -29,12 +27,12 @@
 .stars {
     -webkit-text-stroke: 1px black;
     text-stroke: 1px black;
-    width: 150px;
+    width: 250px;
     height: 20px;
 }
 
 .stars-box {
-    width: 150px;
+    width: 250px;
     height: 20px;
     margin: 0 auto;
     padding-top: 5px;
@@ -48,5 +46,13 @@
 
 .text {
     text-shadow: 1px 1px 2px #555555;
-    padding-top: 10px;
+    padding-top: 65px;
+    padding-bottom: 45px;
+    font-size: 25px;
+}
+
+.CloseButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }

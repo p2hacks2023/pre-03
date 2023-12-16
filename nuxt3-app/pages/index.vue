@@ -9,8 +9,12 @@
             </div>
         </div>
         <div v-if="isHinnyariPopUpBox" id="HinnyariPopUpBox">
-            <HinnyariPopUp id="HinnyariPopUp" @clickClose="viewClose" :name="selectSpotName" :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F'+selectImgPath+'?alt=media'"
-                :evaluation-sum-value="selectEvaluationValue" :evaluation-count="selectEvaluationCount" :mapUrl="'https://www.google.com/maps/search/?api=1&query='+selectMapUrl" />
+            <HinnyariPopUp id="HinnyariPopUp" @clickClose="viewClose" :name="selectSpotName"
+                :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F' + selectImgPath + '?alt=media'"
+                :evaluation-sum-value="selectEvaluationValue" :evaluation-count="selectEvaluationCount"
+                :popUpUserId="selectUserId"
+                :document-id="selectDocumentId"
+                :mapUrl="'https://www.google.com/maps/search/?api=1&query=' + selectMapUrl" />
         </div>
         <div v-if="isSelectMap" id="SelectMap">
             <AppPagePostPopUp @clickClose="postPopUpClose" @clickOk="inputSpot" />
@@ -20,8 +24,7 @@
             <div class="fade"></div>
             <Transition>
                 <PostPopUp class="PostPopUp" :storage="storage" :auth="auth" :db="db" :latlng="latlng"
-                    @clickClose="inputSpotClose" 
-                    @successPost="allPopUpClose" />
+                    @clickClose="inputSpotClose" @successPost="allPopUpClose" />
             </Transition>
         </div>
         <PostButton id="PostButton" @click="postPopUp" />
@@ -32,7 +35,7 @@
 
 <script>
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, doc, onSnapshot } from "firebase/firestore";
+import { getFirestore, collection, onSnapshot } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -41,6 +44,7 @@ export default {
     data: () => {
         return {
             hinnyaris: [],
+            hinnyarisId: [],
             unsubscribe: undefined,
             auth: undefined,
             db: undefined,
@@ -55,6 +59,8 @@ export default {
             selectImgPath: "",
             selectEvaluationValue: 0,
             selectEvaluationCount: 0,
+            selectDocumentId: "",
+            selectUserId: "",
             mapUrl: "",
         }
     },
@@ -80,7 +86,7 @@ export default {
         this.db = getFirestore(app);
         // Initialize Cloud Firestore and get a reference to the service
         this.storage = getStorage(app);
-        console.log("sucess: "+this.storage);
+        console.log("sucess: " + this.storage);
         // this.getDatas();
         // Initialize Firebase Authentication and get a reference to the service
         this.auth = getAuth(app);
@@ -105,15 +111,8 @@ export default {
                 this.hinnyaris = [];
                 querySnapshot.forEach((doc) => {
                     this.hinnyaris.push(doc.data());
+                    this.hinnyarisId.push(doc.id);
                 });
-            });
-        },
-        evaluateHinnyari: async function () {
-            const washingtonRef = doc(this.db, "hinnyaris", "");
-
-            await updateDoc(washingtonRef, {
-                count: 1,//+1する
-                evaluationValue: 1//ずっと足す
             });
         },
         // 自動更新されるようになったのでgetDatasは不必要
@@ -147,11 +146,13 @@ export default {
             this.selectEvaluationValue = this.hinnyaris[index].evaluationValue;
             this.selectEvaluationCount = this.hinnyaris[index].evaluationCount;
             this.selectMapUrl = this.hinnyaris[index].mapUrl;
+            this.selectUserId = this.hinnyaris[index].userid;
+            this.selectDocumentId = this.hinnyarisId[index];
         },
         viewClose: function () {
             this.isHinnyariPopUpBox = false;
         },
-        allPopUpClose: function() {
+        allPopUpClose: function () {
             this.isSelectMap = false;
             this.isInputSpot = false;
         }

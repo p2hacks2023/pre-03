@@ -17,15 +17,19 @@ img {
     width: 250px;
     height: 144px;
     border-radius: 5px;
+    object-fit: cover;
 }
 
 .name {
+    display: flex;
     height: 45px;
 }
 
-.Evaluation {
-    margin: auto 0 auto calc(100% - 135px);
+.name>* {
+    font-size: 16px;
 }
+
+.Evaluation {}
 
 .GoogleMapButton {
     margin: 20px auto;
@@ -35,4 +39,20 @@ img {
     position: absolute;
     right: 10px;
     top: 10px;
+}
+
+.eval {
+    display: flex;
+    justify-content: space-between;
+}
+
+.MinimumButton {
+    width: 70px;
+    height: 30px;
+}
+
+.EvaluationInput {
+    position: fixed;
+    left: calc(50vw - 330px / 2);
+    top: calc(50vh - 350px / 2);
 }

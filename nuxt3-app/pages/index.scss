@@ -27,6 +27,7 @@
 
 .HinnyariBox {
     margin: 20px auto;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .25);
 }
 
 .post-list {
@@ -38,6 +39,12 @@
     position: fixed;
     bottom: 100px;
     right: 40px;
+}
+
+@media screen and (min-width: 500px) {
+    #PostButton {
+        right: calc((100vw - 500px) / 2 + 40px);
+    }
 }
 
 .noScroll {

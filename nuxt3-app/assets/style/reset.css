@@ -12,3 +12,7 @@ main {
     color: var(--darkText);
     min-height: 100vh;
 }
+
+body::-webkit-scrollbar {
+    display: none;
+}
