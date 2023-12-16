@@ -12,30 +12,3 @@
 .margin_whole {
   margin: 10px 10px;
 }
-.margin_article {
-  margin: 10px 0px 0px 20px;
-  white-space: pre-wrap;
-}
-.heading {
-  font-size: 30px;
-}
-.scrollbar {
-  height: 389px;
-  padding: 10px;
-  //border: 2px solid #111;
-  overflow-y: scroll;
-  margin: 0px 0px 0px 0px;
-  white-space: pre-wrap;
-}
-.scrollbar::-webkit-scrollbar {
-  height: 25px;
-  width: 10px;
-}
-.scrollbar::-webkit-scrollbar-thumb {
-  background-color: #888888;
-  border-radius: 10px;
-} 
-.scrollbar::-webkit-scrollbar-track {
-  background-color: #CCCCCC;
-  border-radius: 10px;
-}
