@@ -147,7 +147,9 @@ export default {
         listenHinnyari: function () {
             this.unsubscribe = onSnapshot(collection(this.db, "hinnyaris"), (querySnapshot) => {
                 this.hinnyaris = [];
+                this.hinnyarisId = [];
                 querySnapshot.forEach((doc) => {
+                    console.log(doc.data().evaluationValue);
                     this.hinnyaris.push(doc.data());
                     this.hinnyarisId.push(doc.id);
                 });

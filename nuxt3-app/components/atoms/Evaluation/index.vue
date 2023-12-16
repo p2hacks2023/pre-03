@@ -34,7 +34,7 @@ export default {
         else {
             const val = this.evaluationSumValue / this.evaluationCount;
             this.evalValue = Math.round(val * 100) / 100;
-            this.evalIntValue = Math.floor(val);
+            this.evalIntValue = Number(Math.floor(val));
         }
     }
 }
