@@ -1,6 +1,7 @@
 <template>
     <div>
         ひんやりあるばむ
+        <TermHeading/>
     </div>
 </template>
 
