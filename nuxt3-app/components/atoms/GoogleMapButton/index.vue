@@ -1,12 +1,20 @@
 <template>
     <div>
-        <slot />
+        <a :href="mapUrl" target="_blank">
+            <slot />
+        </a>
     </div>
 </template>
 
 <script>
 export default {
-    name: "GoogleMapButton"
+    name: "GoogleMapButton",
+    props: {
+        mapUrl: {
+            type: String,
+            required: true,
+        }
+    }
 }
 </script>
 

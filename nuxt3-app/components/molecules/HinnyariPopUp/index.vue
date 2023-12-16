@@ -1,11 +1,13 @@
 <template>
     <div class="HinnyariPopUp">
         <div class="wrap">
-            <CloseButton class="CloseButton" />
+            <CloseButton class="CloseButton" @click="this.$emit('clickClose')"/>
             <img :src=imgPath alt="ひんやり画像">
             <div class="name">商品名：{{ name }}</div>
             <Evaluation class="Evaluation" :evaluation-sum-value="evaluationSumValue" :evaluation-count="evaluationCount" />
-            <GoogleMapButton class="GoogleMapButton">Google Mapsで開く</GoogleMapButton>
+            <GoogleMapButton class="GoogleMapButton" :mapUrl="mapUrl">
+                    Google Mapsで開く
+            </GoogleMapButton>
         </div>
     </div>
 </template>
@@ -28,6 +30,10 @@ export default {
         },
         evaluationCount: {
             type: Number,
+            required: true,
+        },
+        mapUrl: {
+            type: String,
             required: true,
         }
     }

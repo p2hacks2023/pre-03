@@ -9,9 +9,9 @@
                     :evaluation-count="hinnyari.evaluationCount" />
             </div>
         </div>
-        <div v-if=false id="HinnyariPopUpBox">
-            <HinnyariPopUp v-if="isHinyariPopUp" id="HinnyariPopUp" :name="'hogehoge'" :imgPath="'images/testImage.jpg'"
-                :evaluation-sum-value="10" :evaluation-count="4" />
+        <div v-if="isHinnyariPopUpBox" id="HinnyariPopUpBox">
+            <HinnyariPopUp id="HinnyariPopUp" @clickClose="viewClose" :name="selectSpotName" :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F'+selectImgPath+'?alt=media'"
+                :evaluation-sum-value="selectEvaluationValue" :evaluation-count="selectEvaluationCount" :mapUrl="selectMapUrl" />
         </div>
         <div v-if="isSelectMap" id="SelectMap">
             <AppPagePostPopUp @clickClose="postPopUpClose" @clickOk="inputSpot" />
@@ -47,6 +47,12 @@ export default {
             height: 0,
             isSelectMap: false,
             isInputSpot: false,
+            isHinnyariPopUpBox: false,
+            selectSpotName: "",
+            selectImgPath: "",
+            selectEvaluationValue: 0,
+            selectEvaluationCount: 0,
+            mapUrl: "",
         }
     },
     mounted() {
@@ -101,7 +107,7 @@ export default {
             const querySnapshot = await getDocs(collection(this.db, "hinnyaris"));
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
-                // console.log(doc.id, " => ", doc.data());
+                console.log(doc.id, " => ", doc.data());
                 this.hinnyaris.push(doc.data());
             });
         },
@@ -121,6 +127,15 @@ export default {
         },
         view: function (index) {
             console.log(index);
+            this.isHinnyariPopUpBox = true;
+            this.selectSpotName = this.hinnyaris[index].spotName;
+            this.selectImgPath = this.hinnyaris[index].imageUrl;
+            this.selectEvaluationValue = this.hinnyaris[index].evaluationValue;
+            this.selectEvaluationCount = this.hinnyaris[index].evaluationCount;
+            this.selectMapUrl = this.hinnyaris[index].mapUrl;
+        },
+        viewClose: function() {
+            this.isHinnyariPopUpBox = false;
         }
     }
 }
