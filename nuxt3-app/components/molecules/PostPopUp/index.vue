@@ -57,7 +57,8 @@ export default {
             await this.addData(imgPath);
             console.log(this.image);
             console.log("success post");
-            reloadNuxtApp();
+            this.$emit("successPost");
+            // reloadNuxtApp();
         },
         addData: async function (imageUrl) {
             const latlng = {

@@ -10,7 +10,7 @@
         </div>
         <div v-if="isHinnyariPopUpBox" id="HinnyariPopUpBox">
             <HinnyariPopUp id="HinnyariPopUp" @clickClose="viewClose" :name="selectSpotName" :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F'+selectImgPath+'?alt=media'"
-                :evaluation-sum-value="selectEvaluationValue" :evaluation-count="selectEvaluationCount" :mapUrl="selectMapUrl" />
+                :evaluation-sum-value="selectEvaluationValue" :evaluation-count="selectEvaluationCount" :mapUrl="'https://www.google.com/maps/search/?api=1&query='+selectMapUrl" />
         </div>
         <div v-if="isSelectMap" id="SelectMap">
             <AppPagePostPopUp @clickClose="postPopUpClose" @clickOk="inputSpot" />
@@ -20,7 +20,8 @@
             <div class="fade"></div>
             <Transition>
                 <PostPopUp class="PostPopUp" :storage="storage" :auth="auth" :db="db" :latlng="latlng"
-                    @clickClose="inputSpotClose" />
+                    @clickClose="inputSpotClose" 
+                    @successPost="allPopUpClose" />
             </Transition>
         </div>
         <PostButton id="PostButton" @click="postPopUp" />
@@ -149,6 +150,10 @@ export default {
         viewClose: function () {
             this.isHinnyariPopUpBox = false;
         },
+        allPopUpClose: function() {
+            this.isSelectMap = false;
+            this.isInputSpot = false;
+        }
     }
 }
 </script>
