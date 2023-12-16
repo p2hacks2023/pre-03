@@ -1,10 +1,12 @@
 <template>
     <div>
-        ひんやりあるばむ
+        <Term/>
     </div>
 </template>
 
 <script>
+import Term from '~/components/molecules/Term/index.vue';
+
 export default {
     name: "App",
 }
