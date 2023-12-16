@@ -1,6 +1,13 @@
 <template>
   <div class="margin">
-    {{ indentText }}
+    <ol>
+      <div v-for="(indentText, index) in indentText" :key="index">
+        <li>
+          {{ indentText }}
+        </li>
+      </div>
+      <br/>
+    </ol>
   </div>
 </template>
 

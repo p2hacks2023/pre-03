@@ -1,8 +1,12 @@
 <template>
   <div>
-    {{ mainText }}
+    <div v-for="(mainText, index) in mainText" :key="index">
+      <li>
+        {{ mainText }}
+      </li>
+    </div>
+    <br/>
   </div>
-  <br/>
 </template>
 
 <script>
