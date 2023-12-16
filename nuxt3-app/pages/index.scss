@@ -1,12 +1,23 @@
 #App {}
 
 #header {
+    display: block;
     width: min(100vw, 500px);
-    height: 50px;
-    background-color: skyblue;
-    text-align: center;
-    line-height: 50px;
-    color: white;
+    height: 80px;
+    border-bottom: solid 1px rgb(179, 179, 179);
+}
+
+#header div {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url("images/header-trim.png");
+    background-repeat: no-repeat;
+    /* 画像の繰り返しを指定  */
+    background-position: center center;
+    /* 画像の表示位置を指定  */
+    background-size: contain;
+    /* 画像のサイズを指定    */
 }
 
 #HinnyariPopUp {

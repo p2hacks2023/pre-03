@@ -1,5 +1,7 @@
 <template>
-    <LoginBox />
+    <div>
+        <LoginBox />
+    </div>
 </template>
 
 

@@ -1,0 +1,68 @@
+.loading-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: gray;
+    text-align: center;
+    line-height: 50vW;
+    padding-top: 200px;
+    font-size: 30px;
+    font-family: sans-serif;
+    color: white;
+}
+
+@media screen and (min-width: 500px) {
+    .loading-page {
+        width: 500px;
+        left: calc((100vw - 500px) / 2);
+    }
+}
+
+.HinnyariBox {
+    margin: 20px auto;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+}
+
+.user {
+    margin: auto;
+    width: 110px;
+    height: 110px;
+    padding: 7px;
+    border-radius: 50%;
+}
+
+.icon {
+    color: black;
+    background-color: #718D8E;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto 20px auto;
+}
+
+.links {
+    margin: auto;
+    text-align: center;
+    color: red;
+}
+
+.logout-button {
+    margin: 5px auto 20px auto;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.email {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}

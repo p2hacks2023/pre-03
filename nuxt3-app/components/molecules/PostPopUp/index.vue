@@ -11,7 +11,7 @@
             </div>
             <img :src="imageUrl" alt="選択画像">
         </div>
-        <InputBox class="InputBox" placeholder="商品名・スポット名" @onchange="(val) => { this.spotName = val }" />
+        <InputBox :maxlength="16" class="InputBox" placeholder="商品名・スポット名" @onchange="(val) => { this.spotName = val }" />
         <Button class="Button" @click="post"><v-btn :loading="isPosting" style="background-color:#FFFFFF00; box-shadow: 0 0 0 black; color: #FCFCFC;">投稿</v-btn></Button>
     </div>
 </template>

@@ -53,11 +53,13 @@ export default {
                     const user = userCredential.user;
                     console.log("signin complete");
                     // ...
+                    this.$router.push('/MyPostList');
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     // ..
+                    alert("メールアドレス・パスワードが正しくありません。");
                 });
         }
     }

@@ -1,6 +1,8 @@
 <template>
     <div id="App" :class="isSelectMap ? 'noScroll' : ''">
-        <div id="header">ひんやりあるばむ</div>
+        <div id="header">
+            <div></div>
+        </div>
         <div class="post-list">
             <div v-for="(hinnyari, index) in hinnyaris" :key="index">
                 <HinnyariBox @click="view(index)" class="HinnyariBox" :name="hinnyari.spotName"
@@ -12,8 +14,7 @@
             <HinnyariPopUp id="HinnyariPopUp" @clickClose="viewClose" :name="selectSpotName"
                 :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F' + selectImgPath + '?alt=media'"
                 :evaluation-sum-value="selectEvaluationValue" :evaluation-count="selectEvaluationCount"
-                :popUpUserId="selectUserId"
-                :document-id="selectDocumentId"
+                :popUpUserId="selectUserId" :document-id="selectDocumentId"
                 :mapUrl="'https://www.google.com/maps/search/?api=1&query=' + selectMapUrl" />
         </div>
         <div v-if="isSelectMap" id="SelectMap">
@@ -27,7 +28,7 @@
                     @clickClose="inputSpotClose" @successPost="allPopUpClose" />
             </Transition>
         </div>
-        <PostButton id="PostButton" @click="postPopUp" />
+        <PostButton v-if="isCheckLogin" id="PostButton" @click="postPopUp" />
         <Menu class="Menu" />
     </div>
 </template>
@@ -55,6 +56,7 @@ export default {
             isSelectMap: false,
             isInputSpot: false,
             isHinnyariPopUpBox: false,
+            isCheckLogin: false,
             selectSpotName: "",
             selectImgPath: "",
             selectEvaluationValue: 0,
@@ -103,9 +105,45 @@ export default {
             }
         });
         this.listenHinnyari();
+        this.listenEvaluation();
+        setTimeout(this.checkLogin, 700);
     },
     methods:
     {
+        checkLogin: function () {
+            this.isLogin = this.auth.currentUser !== null;
+            console.log(this.isLogin);
+            this.isCheckLogin = true;
+        },
+        listenEvaluation: function () {
+            // const unsubscribe = onSnapshot(collection(this.db, "hinnyaris"), (snapshot) => {
+            //     snapshot.docChanges().forEach((change) => {
+            //         if (change.type === "modified"){
+            //             console.log("========change evaluation=======");
+            //             // console.log("modified:", change);
+            //             // console.log("modifieddoc:", change.doc);
+            //             // console.log("modifieddocdata:", change.doc.data());
+            //             const len = this.hinnyarisId.length;
+            //             console.log("0: "+this.hinnyaris[0].evaluationCount);
+            //             for(let i =0; i<len; i++) {
+            //                 if(this.hinnyarisId[i] === change.doc.id) {
+            //                     // console.log("1:", this.hinnyaris.length);
+            //                     // this.hinnyaris.splice(i, 1);
+            //                     // this.hinnyarisId.splice(i, 1);
+            //                     // console.log("2:", this.hinnyaris.length);
+            //                     // this.hinnyaris.push(change.doc.data());
+            //                     // this.hinnyarisId.push(change.doc.id);
+            //                     // console.log("3:", this.hinnyaris.length);
+            //                     console.log("1: "+this.hinnyaris[i].evaluationCount);
+            //                     this.hinnyaris[i] = change.doc.data();
+            //                     console.log("2: "+this.hinnyaris[i].evaluationCount);
+            //                     break;
+            //                 }
+            //             }
+            //         }
+            //     });
+            // });
+        },
         listenHinnyari: function () {
             this.unsubscribe = onSnapshot(collection(this.db, "hinnyaris"), (querySnapshot) => {
                 this.hinnyaris = [];

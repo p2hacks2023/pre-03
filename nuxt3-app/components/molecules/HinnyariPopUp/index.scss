@@ -20,6 +20,14 @@ img {
     object-fit: cover;
 }
 
+.spotNameTag {
+    width: 65px;
+}
+
+.spotName {
+    width: 185px;
+}
+
 .name {
     display: flex;
     height: 45px;
@@ -28,8 +36,6 @@ img {
 .name>* {
     font-size: 16px;
 }
-
-.Evaluation {}
 
 .GoogleMapButton {
     margin: 20px auto;

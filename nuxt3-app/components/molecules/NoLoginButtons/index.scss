@@ -1,18 +1,24 @@
 .Buttons {
-    position: absolute;
-    left: calc(50vw - 290px / 2);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.Buttons>* {
     text-decoration: none;
 }
 
+@media screen and (min-width: 500px) {
+    .Buttons {
+        width: 500px;
+    }
+}
+
 .Button {
+    margin: 50px auto;
     width: 290px;
     height: 40px;
-}
-
-.Button1 {
-    top: calc(50vh - 40px / 2 - 40px);
-}
-
-.Button2 {
-    top: calc(50vh - 40px / 2 + 40px);
 }

@@ -4,11 +4,12 @@
             <CloseButton class="CloseButton" @click="this.$emit('clickClose')" />
             <img :src=imgPath alt="ひんやり画像">
             <div class="name">
-                <div>商品名：</div>
-                <div>{{ name }}</div>
+                <div class="spotNameTag">商品名：</div>
+                <div class="spotName">{{ name }}</div>
             </div>
             <div class="eval">
                 <MinimumButton v-if="!isPostUser" @click="isEvaluationInput = true" class="MinimumButton">評価する</MinimumButton>
+                <div v-else />
                 <Evaluation class="Evaluation" :evaluation-sum-value="evaluationSumValue"
                     :evaluation-count="evaluationCount" />
             </div>

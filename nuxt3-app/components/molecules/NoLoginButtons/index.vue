@@ -1,11 +1,17 @@
 <template>
-    <div>
-        <router-link to="/Login" class="Buttons Button1">
-            <Button class="Button">Login</Button>
-        </router-link>
-        <router-link to="/Signin" class="Buttons Button2">
-            <Button class="Button">新規作成</Button>
-        </router-link>
+    <div class="Buttons ">
+        <div>
+            <Button class="Button">
+                <router-link to="/Login"  style="color:#FCFCFC; text-decoration: none;">
+                    Login
+                </router-link>
+            </Button>
+            <Button class="Button">
+                <router-link to="/Signin" style="color:#FCFCFC; text-decoration: none;">
+                    新規作成
+                </router-link>
+            </Button>
+        </div>
     </div>
 </template>
 

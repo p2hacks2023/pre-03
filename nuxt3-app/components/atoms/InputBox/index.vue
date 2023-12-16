@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input :type="type" :placeholder="placeholder" v-model="value" @change="this.$emit('onchange', value)" />
+        <input :maxlength="maxlength==null ? '' : maxlength" :type="type" :placeholder="placeholder" v-model="value" @change="this.$emit('onchange', value)" />
     </div>
 </template>
 
@@ -21,6 +21,11 @@ export default {
             type: String,
             default: ""
         },
+        maxlength: {
+            type: Number,
+            required: false,
+            default: null,
+        }
     },
 }
 </script>

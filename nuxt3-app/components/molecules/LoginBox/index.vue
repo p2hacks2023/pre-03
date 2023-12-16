@@ -5,9 +5,11 @@
             <InputBox class="InputBox" placeholder="メールアドレス" @onchange="(val) => { this.email = val }" />
             <InputBox class="InputBox" type="password" placeholder="パスワード" @onchange="(val) => { this.password = val }" />
             <Button @click="login" class="Button">Login</Button>
-            <routerLink to="/Signin">
-                <Button class="Button">新規作成</Button>
-            </routerLink>
+            <Button class="Button">
+                <routerLink to="/Signin" style="color:#FCFCFC; text-decoration: none;">
+                    新規作成
+                </routerLink>
+            </Button>
             <hr />
             <GoogleLoginButton @click="loginWithGoogle" class="GoogleLoginButton" />
         </div>
@@ -52,11 +54,13 @@ export default {
                     const user = userCredential.user;
                     console.log("login complte");
                     // ...
+                    this.$router.push('/MyPostList');
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    console.log(errorCode+", "+errorMessage);
+                    console.log(errorCode + ", " + errorMessage);
+                    alert("メールアドレス・パスワードが正しくありません。");
                 });
         },
         loginWithGoogle: function () {

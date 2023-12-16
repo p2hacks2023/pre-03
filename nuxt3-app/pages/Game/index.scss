@@ -1,0 +1,21 @@
+.loading-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: gray;
+    text-align: center;
+    line-height: 50vW;
+    padding-top: 200px;
+    font-size: 30px;
+    font-family: sans-serif;
+    color: white;
+}
+
+@media screen and (min-width: 500px) {
+    .loading-page {
+        width: 500px;
+        left: calc((100vw - 500px) / 2);
+    }
+}

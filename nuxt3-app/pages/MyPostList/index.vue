@@ -1,21 +1,35 @@
 <template>
     <div>
-        <div v-if="isLogin">
-            <div class="post-list">
-                <div v-for="(hinnyari, index) in myHinnyaris" :key="index">
-                    <HinnyariDeleteBox @deleteClick="deleteHinnyari(index)" class="HinnyariBox" :name="hinnyari.spotName"
-                        :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F' + hinnyari.imageUrl + '?alt=media'"
-                        :evaluation-sum-value="hinnyari.evaluationValue" :evaluation-count="hinnyari.evaluationCount" />
+        <div v-if="isCheckLogin">
+            <div v-if="isLogin">
+                <div class="profile">
+                    <div>
+                        <div class="icon">
+                            <font-awesome-icon :icon="['fas', 'user']" class="user" />
+                        </div>
+                        <div class="email">{{ email }}</div>
+                        <div class="links">
+                            <button @click="logout" class="logout-button">Logout</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-list">
+                    <div v-for="(hinnyari, index) in myHinnyaris" :key="index">
+                        <HinnyariDeleteBox @deleteClick="deleteHinnyari(index)" class="HinnyariBox"
+                            :name="hinnyari.spotName"
+                            :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F' + hinnyari.imageUrl + '?alt=media'"
+                            :evaluation-sum-value="hinnyari.evaluationValue" :evaluation-count="hinnyari.evaluationCount" />
+                    </div>
                 </div>
             </div>
+            <div v-else>
+                <NoLoginButtons />
+            </div>
+            <Menu class="Menu" />
         </div>
-        <div v-else>
-            <NoLoginButtons />
+        <div v-else class="loading-page">
+            <p>Loading...</p>
         </div>
-        <Menu class="Menu" />
-    </div>
-    <div class="links">
-        <button @click="logout" class="button--green">Logout</button>
     </div>
 </template>
 
@@ -30,14 +44,16 @@ export default {
     data: () => {
         return {
             isLogin: false,
+            isCheckLogin: false,
             auth: undefined,
             db: undefined,
             myHinnyaris: [],
             myHinnyarisId: [],
             storage: undefined,
+            email: "",
         }
     },
-    async mounted() {
+    mounted() {
         const firebaseConfig = {
             apiKey: "AIzaSyDb6Y-8ischpWY57SxMxk3TYD76EDtA9ZY",
             authDomain: "hinnyari-album.firebaseapp.com",
@@ -64,9 +80,11 @@ export default {
         checkLogin: function () {
             this.isLogin = this.auth.currentUser !== null;
             console.log(this.isLogin);
-            if(this.isLogin) {
+            if (this.isLogin) {
                 this.getDatas();
+                this.email = this.auth.currentUser.email;
             }
+            this.isCheckLogin = true;
         },
         logout: async function () {
             await signOut(this.auth).then(() => {
@@ -84,12 +102,12 @@ export default {
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
+                // console.log(doc.id, " => ", doc.data());
                 this.myHinnyarisId.push(doc.id);
                 this.myHinnyaris.push(doc.data());
             });
         },
-        deleteHinnyari: async function(index) {
+        deleteHinnyari: async function (index) {
             console.log(this.myHinnyarisId[index]);
 
             const desertRef = ref(this.storage, "hinnyaris/" + this.myHinnyaris[index].imageUrl);
