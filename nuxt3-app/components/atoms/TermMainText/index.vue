@@ -1,7 +1,9 @@
 <template>
   <div>
-    <slot/>
-    {{ mainText }}
+    <li>
+      {{ mainText }}
+    </li>
+    <br/>
   </div>
 </template>
 

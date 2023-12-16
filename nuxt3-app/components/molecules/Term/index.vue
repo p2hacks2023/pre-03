@@ -1,15 +1,17 @@
 <template>
-    
   <TermBox>
     <div v-for="term in terms">
-      <TermHeading :heading="term.heading" />
+      <TermHeading :heading="term.heading"/>
       <div v-for="text in term.text">
-        <TermMainText :mainText="text.mainText"><p>あ</p></TermMainText>
-        <TermIndentText :indentText="text.indentText"><p>い</p></TermIndentText>
+        <div v-if="text.mainText">
+          <TermMainText :mainText="text.mainText"/>
+        </div>
+        <div v-else>
+          <TermIndentText :indentTexts="text.indentText"/>
+        </div>
       </div>
     </div>
   </TermBox>
-
 </template>
 
 <script>

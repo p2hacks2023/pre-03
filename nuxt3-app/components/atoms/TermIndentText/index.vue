@@ -1,7 +1,13 @@
 <template>
   <div class="margin">
-    <slot/>
-    {{ indentText }}
+    <ol>
+      <div v-for="indentText in indentTexts">
+        <li>
+          {{ indentText }}
+        </li>
+      </div>
+      <br/>
+    </ol>
   </div>
 </template>
 
@@ -9,7 +15,7 @@
 export default {
   name: "TermIndentText",
   props: {
-    indentText: {
+    indentTexts: {
       type: Array,
       required: true
     }

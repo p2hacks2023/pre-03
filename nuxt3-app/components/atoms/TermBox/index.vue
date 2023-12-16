@@ -1,6 +1,5 @@
 <template>
   <div class="box">
-    
     <div class="margin_whole">
       <slot />
     </div>
