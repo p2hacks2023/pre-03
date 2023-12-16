@@ -19,3 +19,24 @@
         left: calc((100vw - 500px) / 2);
     }
 }
+
+.imgBox {
+    display: flex;
+    justify-content: center;
+    margin-top: 130px;
+}
+
+.bear {
+    height: auto;
+}
+
+.rank {
+    display: 100%;
+    text-align: right;
+    margin: 20px;
+    font-size: 25px;
+}
+
+.rank span {
+    font-size: 25px;
+}

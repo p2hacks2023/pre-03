@@ -13,13 +13,6 @@
     color: white;
 }
 
-@media screen and (min-width: 500px) {
-    .loading-page {
-        width: 500px;
-        left: calc((100vw - 500px) / 2);
-    }
-}
-
 .HinnyariBox {
     margin: 20px auto;
 }
@@ -65,4 +58,91 @@
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+}
+
+.sub-menu-btn {
+    position: fixed;
+    top: 15px;
+    right: 25px;
+    z-index: 30;
+}
+
+.sub-menu-btn:hover {
+    cursor: pointer;
+}
+
+.sub-menu-btn::after {
+    position: absolute;
+    top: -9px;
+    left: -15px;
+    display: block;
+    content: '';
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    transition: background-color ease-in 0.2s;
+}
+
+.sub-menu-btn:hover::after {
+    background-color: rgba(128, 128, 128, 0.363);
+}
+
+.sub-menu-btn>i {
+    display: block;
+    margin: 8px auto;
+    width: 25px;
+    height: 2px;
+    background-color: black;
+}
+
+.sub-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 29;
+    position: fixed;
+    top: 65px;
+    opacity: 0;
+    transition: opacity ease-in-out 0.3s;
+    right: 20px;
+    width: 140px;
+    height: 130px;
+    background-color: white;
+    box-shadow: 0 0 3px rgba(126, 126, 126, 0.267);
+    padding: 0 10px;
+}
+
+.sub-menu-true {
+    opacity: 1;
+}
+
+.sub-menu ul {
+    list-style: none;
+}
+
+.sub-menu ul li {
+    margin: 5px auto;
+    text-align: center;
+    height: 30px;
+}
+
+.sub-menu ul li:hover {
+    cursor: pointer;
+}
+
+.sub-menu ul li>* {
+    color: black;
+}
+
+@media screen and (min-width: 500px) {
+    .loading-page {
+        width: 500px;
+        left: calc((100vw - 500px) / 2);
+    }
+    .sub-menu-btn {
+        right: calc((100vw - 500px) / 2 + 20px);
+    }
+    .sub-menu {
+        right: calc((100vw - 500px) / 2 + 10px);
+    }
 }

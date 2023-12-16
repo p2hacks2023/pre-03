@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="bg-img">
-
     </div>
     <main>
       <slot />

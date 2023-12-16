@@ -62,6 +62,9 @@ export default {
             this.isSending = true;
             await this.evaluateHinnyari(this.ratingVal);
             console.log(this.ratingVal);
+            setTimeout(() => {
+                reloadNuxtApp();    
+            }, 5000);
             reloadNuxtApp();
         }
     }

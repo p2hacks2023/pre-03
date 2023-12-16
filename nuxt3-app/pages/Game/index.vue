@@ -2,7 +2,10 @@
     <div>
         <div v-if="isCheckLogin">
             <div v-if="isLogin">
-                白熊のゲームページ
+                <div class="rank">Rank. <span>{{ Rank }}</span></div>
+                <div class="imgBox">
+                    <img src="~/assets/images/whiteBear-trim.png" id="image" class="bear">
+                </div>
             </div>
             <div v-else>
                 <NoLoginButtons />
@@ -32,6 +35,8 @@ export default {
             evaluationSum: 0,
             storage: undefined,
             myHinnyaris: [],
+            bearWidth: 100,
+            Rank: 1,
         }
     },
     mounted() {
@@ -76,6 +81,10 @@ export default {
                 this.evaluationSum += doc.data().evaluationValue;
             });
             console.log(this.evaluationSum);
+            this.bearWidth = 100 + (this.evaluationSum % 200);
+            const image = document.querySelector("#image");
+            image.width = this.bearWidth;
+            this.Rank = Math.floor(this.evaluationSum / 200) + 1;
         },
     }
 }

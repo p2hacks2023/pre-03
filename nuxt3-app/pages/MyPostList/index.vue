@@ -1,6 +1,26 @@
 <template>
     <div>
         <div v-if="isCheckLogin">
+            <div class="sub-menu-btn" @click="isMenu = !isMenu">
+                <i />
+                <i />
+                <i />
+            </div>
+            <div class="sub-menu" :class="isMenu ? 'sub-menu-true' : ''">
+                <ul>
+                    <li>
+                        <routerLink to="">お問い合わせ</routerLink>
+                    </li>
+                    <hr />
+                    <li>
+                        <routerLink to="">利用規約</routerLink>
+                    </li>
+                    <hr v-if="isLogin" />
+                    <li v-if="isLogin" @click="isMenu = !isMenu">
+                        <a @click="logout" class="logout-button" style="color:red;">Logout</a>
+                    </li>
+                </ul>
+            </div>
             <div v-if="isLogin">
                 <div class="profile">
                     <div>
@@ -8,9 +28,6 @@
                             <font-awesome-icon :icon="['fas', 'user']" class="user" />
                         </div>
                         <div class="email">{{ email }}</div>
-                        <div class="links">
-                            <button @click="logout" class="logout-button">Logout</button>
-                        </div>
                     </div>
                 </div>
                 <div class="post-list">
@@ -51,6 +68,7 @@ export default {
             myHinnyarisId: [],
             storage: undefined,
             email: "",
+            isMenu: false,
         }
     },
     mounted() {
