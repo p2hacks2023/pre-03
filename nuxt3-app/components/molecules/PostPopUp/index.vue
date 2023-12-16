@@ -12,13 +12,13 @@
             <img :src="imageUrl" alt="選択画像">
         </div>
         <InputBox class="InputBox" placeholder="商品名・スポット名" @onchange="(val) => { this.spotName = val }" />
-        <Button class="Button" @click="post">投稿</Button>
+        <Button class="Button" @click="post"><v-btn :loading="isPosting" style="background-color:#FFFFFF00; box-shadow: 0 0 0 black; color: #FCFCFC;">投稿</v-btn></Button>
     </div>
 </template>
 
 <script>
 import { ref, uploadBytes } from "firebase/storage";
-import { collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { collection, addDoc} from "firebase/firestore";
 import { reloadNuxtApp } from "nuxt/app";
 
 export default {
@@ -36,6 +36,7 @@ export default {
     },
     data: () => {
         return {
+            isPosting: false,
             image: undefined,
             imageUrl: undefined,
             spotName: "",
@@ -50,6 +51,7 @@ export default {
             this.imageUrl =  URL.createObjectURL(this.image);
         },
         post: async function () {
+            this.isPosting = true;
             const imgPath = this.auth.currentUser.uid + "_" + Date.now();
             await this.upload(imgPath);
             await this.addData(imgPath);
@@ -58,11 +60,19 @@ export default {
             reloadNuxtApp();
         },
         addData: async function (imageUrl) {
+            const latlng = {
+                lat: localStorage.getItem("lat"),
+                lng: localStorage.getItem("lng"),
+            }
+            console.log(latlng);
+
             await addDoc(collection(this.db, "hinnyaris"), {
                 evaluationCount: 0,
                 evaluationValue: 0,
                 imageUrl: imageUrl,
-                mapUrl: "test",
+                mapUrl: latlng.lat+","+latlng.lng,
+                // mapUrl: "https://maps.google.com/maps?ll="+latlng.lat+","+latlng.lng+"&q="+latlng.lat+","+latlng.lng,
+                // mapUrl: "https://www.google.com/maps/search/?api=1&query="+latlng.lat+","+latlng.lng,
                 spotName: this.spotName,
                 userid: this.auth.currentUser.uid,
             });

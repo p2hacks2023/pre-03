@@ -30,8 +30,8 @@ export default {
                 this.latlng = latlng;
                 console.log("move point");
                 console.log(latlng);
-                localStorage.setItem("lat", latlng.lat);
-                localStorage.setItem("lng", latlng.lng);
+                localStorage.setItem("lat", latlng.lat+"");
+                localStorage.setItem("lng", latlng.lng+"");
             }
         });
         navigator.geolocation.getCurrentPosition(this.success);
@@ -44,8 +44,8 @@ export default {
                 lat: coords.latitude,
                 lng: coords.longitude
             }
-            localStorage.setItem("lat", latlng.lat);
-            localStorage.setItem("lng", latlng.lng);
+            localStorage.setItem("lat", latlng.lat+"");
+            localStorage.setItem("lng", latlng.lng+"");
             console.log("Nuxt");
             console.log(latlng);
             const iframeElement = document.querySelector("iframe");

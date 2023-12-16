@@ -29,8 +29,8 @@ export default defineNuxtConfig({
       ],
       script: [
         {
-          src: 'https://kit.fontawesome.com/8fec9e743f.js',
-          crossorigin: 'anonymous',
+          src: "https://kit.fontawesome.com/8fec9e743f.js",
+          crossorigin: "anonymous",
         },
       ],
     },
@@ -38,7 +38,7 @@ export default defineNuxtConfig({
   css: [
     "~/assets/style/reset.css",
     "vuetify/lib/styles/main.sass",
-    '@fortawesome/fontawesome-svg-core/styles.css',
+    "@fortawesome/fontawesome-svg-core/styles.css",
   ],
   components: [
     {
@@ -54,9 +54,7 @@ export default defineNuxtConfig({
       "vuetify",
     ],
   },
-  plugins: [
-    '@/plugins/fontawesome.ts'
-  ],
+  plugins: ["@/plugins/fontawesome.ts"],
   vite: {
     define: {
       "process.env.DEBUG": true,
@@ -69,6 +67,6 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    "nuxt-rating"
-  ]
+    "nuxt-rating",
+  ],
 });
