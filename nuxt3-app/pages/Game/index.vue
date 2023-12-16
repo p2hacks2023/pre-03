@@ -81,10 +81,10 @@ export default {
                 this.evaluationSum += doc.data().evaluationValue;
             });
             console.log(this.evaluationSum);
-            this.bearWidth = 100 + (this.evaluationSum % 200);
+            this.bearWidth = 100 + (this.evaluationSum % 30) * 6;
             const image = document.querySelector("#image");
             image.width = this.bearWidth;
-            this.Rank = Math.floor(this.evaluationSum / 200) + 1;
+            this.Rank = Math.floor(this.evaluationSum / 30) + 1;
         },
     }
 }

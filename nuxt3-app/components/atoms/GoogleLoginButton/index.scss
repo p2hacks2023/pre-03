@@ -4,7 +4,7 @@
     align-items: center;
 }
 
-.google-auth {
+.google-login {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,13 +25,13 @@
     margin-right: 8%;
 }
 
-.google-auth.hover {
+.google-login.hover {
     background-color: #e6e6e6;
     border-color: #c8c8c8;
     color: #303030;
 }
 
-.google-auth.is-hover {
+.google-login.is-hover {
     background-color: #e6e6e6;
     border-color: #c8c8c8;
     color: #303030;

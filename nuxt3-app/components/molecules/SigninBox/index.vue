@@ -41,19 +41,22 @@ export default {
         this.auth = getAuth(app);
     },
     methods: {
-        signinwithgoogle: function () {
+        signinwithgoogle: async function () {
             const provider = new GoogleAuthProvider();
-            signInWithRedirect(this.auth, provider);
+            await signInWithRedirect(this.auth, provider);
+            this.$router.push('/MyPostList');
+            setTimeout(() => {this.$router.push('/MyPostList');}, 1000);
         },
-        signin: function () {
+        signin: async function () {
+            let flag = false;
             // console.log(this.auth);
-            createUserWithEmailAndPassword(this.auth, this.email, this.password)
+            await createUserWithEmailAndPassword(this.auth, this.email, this.password)
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
                     console.log("signin complete");
                     // ...
-                    this.$router.push('/MyPostList');
+                    flag = true;
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -61,6 +64,9 @@ export default {
                     // ..
                     alert("メールアドレス・パスワードが正しくありません。");
                 });
+                if(flag) {
+                    this.$router.push('/MyPostList');
+                }
         }
     }
 }

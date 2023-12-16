@@ -15,6 +15,7 @@
                 :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F' + selectImgPath + '?alt=media'"
                 :evaluation-sum-value="selectEvaluationValue" :evaluation-count="selectEvaluationCount"
                 :popUpUserId="selectUserId" :document-id="selectDocumentId"
+                :is-login="isLogin"
                 :mapUrl="'https://www.google.com/maps/search/?api=1&query=' + selectMapUrl" />
         </div>
         <div v-if="isSelectMap" id="SelectMap">
@@ -28,7 +29,7 @@
                     @clickClose="inputSpotClose" @successPost="allPopUpClose" />
             </Transition>
         </div>
-        <PostButton v-if="isCheckLogin" id="PostButton" @click="postPopUp" />
+        <PostButton v-show="isLogin" id="PostButton" @click="postPopUp" />
         <Menu class="Menu" />
     </div>
 </template>
@@ -64,6 +65,7 @@ export default {
             selectDocumentId: "",
             selectUserId: "",
             mapUrl: "",
+            isLogin: false,
         }
     },
     mounted() {
@@ -111,7 +113,7 @@ export default {
     methods:
     {
         checkLogin: function () {
-            this.isLogin = this.auth.currentUser !== null;
+            this.isLogin = (this.auth.currentUser !== null);
             console.log(this.isLogin);
             this.isCheckLogin = true;
         },

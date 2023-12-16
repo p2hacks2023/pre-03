@@ -63,10 +63,12 @@ export default {
                     alert("メールアドレス・パスワードが正しくありません。");
                 });
         },
-        loginWithGoogle: function () {
+        loginWithGoogle: async function () {
             console.log(this.auth);
             const provider = new GoogleAuthProvider();
-            signInWithRedirect(this.auth, provider);
+            await signInWithRedirect(this.auth, provider);
+            this.$router.push('/MyPostList');
+            setTimeout(() => {this.$router.push('/MyPostList');}, 1000);
         }
     }
 }

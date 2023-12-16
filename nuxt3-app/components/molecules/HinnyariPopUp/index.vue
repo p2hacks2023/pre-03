@@ -69,6 +69,10 @@ export default {
             type: String,
             required: true,
         },
+        isLogin: {
+            type: Boolean,
+            required: true,
+        }
     },
     mounted() {
         const firebaseConfig = {
@@ -89,7 +93,9 @@ export default {
         // Initialize Firebase Authentication and get a reference to the service
         this.auth = getAuth(app);
         
-        setTimeout(() => {this.isPostUser = (this.auth.currentUser.uid === this.popUpUserId);}, 700);
+        if(this.isLogin) {
+            setTimeout(() => {this.isPostUser = (this.auth.currentUser.uid === this.popUpUserId);}, 700);
+        }
     }
 }
 </script>
