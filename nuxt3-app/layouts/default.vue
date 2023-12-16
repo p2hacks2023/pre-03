@@ -21,7 +21,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-image: url("images/background-image.jpg");
+    background-image: url("~/assets/images/background-image.jpg");
     background-size: cover;
     background-position: center center;
     background-size: cover;

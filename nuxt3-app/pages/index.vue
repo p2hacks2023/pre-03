@@ -14,12 +14,11 @@
             <HinnyariPopUp id="HinnyariPopUp" @clickClose="viewClose" :name="selectSpotName"
                 :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F' + selectImgPath + '?alt=media'"
                 :evaluation-sum-value="selectEvaluationValue" :evaluation-count="selectEvaluationCount"
-                :popUpUserId="selectUserId" :document-id="selectDocumentId"
-                :is-login="isLogin"
+                :popUpUserId="selectUserId" :document-id="selectDocumentId" :is-login="isLogin"
                 :mapUrl="'https://www.google.com/maps/search/?api=1&query=' + selectMapUrl" />
         </div>
         <div v-if="isSelectMap" id="SelectMap">
-            <AppPagePostPopUp @clickClose="postPopUpClose" @clickOk="inputSpot" />
+            <AppPagePostPopUp @clickClose="postPopUpClose" @clickOk="inputSpot" @move="moveMap(prop)" />
         </div>
         <div v-if="isInputSpot" id="InputSpot">
             <GoogleMap class="GoogleMap" :width="width + 'px'" :height="height + 'px'" />
@@ -53,7 +52,7 @@ export default {
             storage: undefined,
             width: 0,
             height: 0,
-            latlng: undefined,
+            latlng: "",
             isSelectMap: false,
             isInputSpot: false,
             isHinnyariPopUpBox: false,
@@ -112,6 +111,10 @@ export default {
     },
     methods:
     {
+        moveMap: function (prop) {
+            console.log("map:"+prop);
+            this.latlng = prop;
+        },
         checkLogin: function () {
             this.isLogin = (this.auth.currentUser !== null);
             console.log(this.isLogin);

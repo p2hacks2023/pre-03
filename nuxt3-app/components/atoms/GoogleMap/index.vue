@@ -18,25 +18,24 @@ export default {
             required: true,
         }
     },
-    data: () => {
-        return {
-            latlng: undefined,
-        }
-    },
     mounted() {
         window.addEventListener("message", (response) => {
             if (response.data.type === "object") {
                 const latlng = response.data.data.latlng;
-                this.latlng = latlng;
-                console.log("move point");
-                console.log(latlng);
-                localStorage.setItem("lat", latlng.lat+"");
-                localStorage.setItem("lng", latlng.lng+"");
+                // localStorage.setItem("lat", latlng.lat+"");
+                // localStorage.setItem("lng", latlng.lng+"");
+                setTimeout(this.move(latlng.lat, latlng.lng), 300);
             }
         });
         navigator.geolocation.getCurrentPosition(this.success);
     },
     methods: {
+        move(lat, lng) {
+            console.log("move point");
+            console.log(lat + "," + lng);
+            localStorage.setItem("latlng", (lat + "," + lng))
+            // this.$emit("move", (lat + "," + lng));
+        },
         success(pos) {
             let coords = pos.coords;
 
@@ -44,8 +43,9 @@ export default {
                 lat: coords.latitude,
                 lng: coords.longitude
             }
-            localStorage.setItem("lat", latlng.lat+"");
-            localStorage.setItem("lng", latlng.lng+"");
+            // localStorage.setItem("lat", latlng.lat+"");
+            // localStorage.setItem("lng", latlng.lng+"");
+            this.$emit("move", (latlng.lat + "," + latlng.lng));
             console.log("Nuxt");
             console.log(latlng);
             const iframeElement = document.querySelector("iframe");
@@ -55,9 +55,7 @@ export default {
                     latlng: latlng,
                 }
             }
-            for(let i=0; i<3; i++) {
-                setTimeout(i*300, () => {iframeElement.contentWindow.postMessage(message, "*")});
-            }
+            setTimeout(500, () => { iframeElement.contentWindow.postMessage(message, "*") });
         }
     }
 

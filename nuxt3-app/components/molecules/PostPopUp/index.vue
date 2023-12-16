@@ -33,6 +33,10 @@ export default {
         db: {
             default: undefined,
         },
+        latlng: {
+            type: String,
+            required: true,
+        }
     },
     data: () => {
         return {
@@ -40,6 +44,7 @@ export default {
             image: undefined,
             imageUrl: undefined,
             spotName: "",
+            latlngs: "",
         }
     },
     mounted() {
@@ -51,6 +56,7 @@ export default {
             this.imageUrl =  URL.createObjectURL(this.image);
         },
         post: async function () {
+            this.latlngs = localStorage.getItem("latlng");
             this.isPosting = true;
             const imgPath = this.auth.currentUser.uid + "_" + Date.now();
             await this.upload(imgPath);
@@ -61,17 +67,18 @@ export default {
             // reloadNuxtApp();
         },
         addData: async function (imageUrl) {
-            const latlng = {
-                lat: localStorage.getItem("lat"),
-                lng: localStorage.getItem("lng"),
-            }
-            console.log(latlng);
+            // const latlng = {
+            //     lat: await localStorage.getItem("lat"),
+            //     lng: await localStorage.getItem("lng"),
+            // }
+            console.log("POST");
+            console.log(this.latlngs);
 
             await addDoc(collection(this.db, "hinnyaris"), {
                 evaluationCount: 0,
                 evaluationValue: 0,
                 imageUrl: imageUrl,
-                mapUrl: latlng.lat+","+latlng.lng,
+                mapUrl: this.latlngs,
                 // mapUrl: "https://maps.google.com/maps?ll="+latlng.lat+","+latlng.lng+"&q="+latlng.lat+","+latlng.lng,
                 // mapUrl: "https://www.google.com/maps/search/?api=1&query="+latlng.lat+","+latlng.lng,
                 spotName: this.spotName,
