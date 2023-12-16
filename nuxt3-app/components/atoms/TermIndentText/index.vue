@@ -1,5 +1,6 @@
 <template>
   <div class="margin">
+    <slot/>
     {{ indentText }}
   </div>
 </template>

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <slot/>
     {{ mainText }}
   </div>
   <br/>
@@ -10,7 +11,7 @@ export default {
   name: "TermMainText",
   props: {
     mainText: {
-      type: Array,
+      type: String,
       required: true
     }
   },
