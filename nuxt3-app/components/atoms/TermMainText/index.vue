@@ -1,16 +1,15 @@
 <template>
-  <div class="fontSize">
-    あいうえお
-    {{ heading }}
+  <div>
+    {{ mainText }}
   </div>
   <br/>
 </template>
 
 <script>
 export default {
-  name: "TermHeading",
+  name: "TermMainText",
   props: {
-    heading: {
+    mainText: {
       type: String,
       required: true
     }
