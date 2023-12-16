@@ -32,6 +32,10 @@ export default defineNuxtConfig({
           src: "https://kit.fontawesome.com/8fec9e743f.js",
           crossorigin: "anonymous",
         },
+        {
+          type: "text/javascript",
+          src: "https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js",
+        },
       ],
     },
   },

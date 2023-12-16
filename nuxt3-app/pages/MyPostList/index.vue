@@ -9,15 +9,15 @@
             <div class="sub-menu" :class="isMenu ? 'sub-menu-true' : ''">
                 <ul>
                     <li>
-                        <routerLink to="">お問い合わせ</routerLink>
+                        <routerLink to="/Contact">お問い合わせ</routerLink>
                     </li>
                     <hr />
                     <li>
-                        <routerLink to="">利用規約</routerLink>
+                        <routerLink to="/Term">利用規約</routerLink>
                     </li>
                     <hr v-if="isLogin" />
                     <li v-if="isLogin" @click="isMenu = !isMenu">
-                        <a @click="logout" class="logout-button" style="color:red;">Logout</a>
+                        <a @click="logout" class="logout-button" style="color:rgb(255, 40, 40);">Logout</a>
                     </li>
                 </ul>
             </div>

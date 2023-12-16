@@ -105,7 +105,7 @@ export default {
             }
         });
         this.listenHinnyari();
-        this.listenEvaluation();
+        // this.listenEvaluation();
         setTimeout(this.checkLogin, 700);
     },
     methods:
@@ -114,35 +114,6 @@ export default {
             this.isLogin = this.auth.currentUser !== null;
             console.log(this.isLogin);
             this.isCheckLogin = true;
-        },
-        listenEvaluation: function () {
-            // const unsubscribe = onSnapshot(collection(this.db, "hinnyaris"), (snapshot) => {
-            //     snapshot.docChanges().forEach((change) => {
-            //         if (change.type === "modified"){
-            //             console.log("========change evaluation=======");
-            //             // console.log("modified:", change);
-            //             // console.log("modifieddoc:", change.doc);
-            //             // console.log("modifieddocdata:", change.doc.data());
-            //             const len = this.hinnyarisId.length;
-            //             console.log("0: "+this.hinnyaris[0].evaluationCount);
-            //             for(let i =0; i<len; i++) {
-            //                 if(this.hinnyarisId[i] === change.doc.id) {
-            //                     // console.log("1:", this.hinnyaris.length);
-            //                     // this.hinnyaris.splice(i, 1);
-            //                     // this.hinnyarisId.splice(i, 1);
-            //                     // console.log("2:", this.hinnyaris.length);
-            //                     // this.hinnyaris.push(change.doc.data());
-            //                     // this.hinnyarisId.push(change.doc.id);
-            //                     // console.log("3:", this.hinnyaris.length);
-            //                     console.log("1: "+this.hinnyaris[i].evaluationCount);
-            //                     this.hinnyaris[i] = change.doc.data();
-            //                     console.log("2: "+this.hinnyaris[i].evaluationCount);
-            //                     break;
-            //                 }
-            //             }
-            //         }
-            //     });
-            // });
         },
         listenHinnyari: function () {
             this.unsubscribe = onSnapshot(collection(this.db, "hinnyaris"), (querySnapshot) => {

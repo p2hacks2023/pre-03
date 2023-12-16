@@ -1,10 +1,6 @@
 <template>
     <div>
-<<<<<<< HEAD
         <SigninBox />
-=======
-        
->>>>>>> feat/TermComponent
     </div>
 </template>
 
