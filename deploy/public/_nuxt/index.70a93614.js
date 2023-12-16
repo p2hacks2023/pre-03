@@ -1,1 +1,0 @@
-import{_ as t,t as n,v as _,N as a}from"./entry.530d9d50.js";const o={name:"Button"};function s(e,c,r,d,p,u){return n(),_("div",null,[a(e.$slots,"default",{},void 0,!0)])}const f=t(o,[["render",s],["__scopeId","data-v-a79faa9c"]]);export{f as _};

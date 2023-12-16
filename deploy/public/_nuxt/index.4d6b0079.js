@@ -1,1 +1,0 @@
-import{_ as t}from"./index.9a427193.js";import{_,v as n,B as o,z as s,t as a}from"./entry.530d9d50.js";const c={name:"Game"};function r(p,d,m,u,i,l){const e=t;return a(),n("div",null,[o(" 白熊のゲームページ "),s(e,{class:"Menu"})])}const v=_(c,[["render",r],["__scopeId","data-v-67927e20"]]);export{v as default};
