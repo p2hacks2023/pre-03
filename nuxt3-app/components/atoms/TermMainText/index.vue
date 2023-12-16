@@ -1,13 +1,13 @@
 <template>
   <div>
-    {{ heading }}
+    {{ mainText }}
   </div>
   <br/>
 </template>
 
 <script>
 export default {
-  name: "TermHeading",
+  name: "TermMainText",
   props: {
     heading: {
       type: String,
