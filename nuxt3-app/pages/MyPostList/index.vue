@@ -89,8 +89,9 @@ export default {
             console.log(this.myHinnyarisId[index]);
             const docname = this.myHinnyarisId[index];
             await deleteDoc(doc(this.db, "hinnyaris", docname));
-            console.log(index);
-            reloadNuxtApp();
+            this.myHinnyaris.splice(index, 1);
+            this.myHinnyarisId.splice(index, 1);
+            // console.log(this.myHinnyarisId[index]);
         },
     }
 }
