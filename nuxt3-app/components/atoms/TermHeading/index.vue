@@ -1,17 +1,19 @@
 <template>
-  <div class="heading">
-    {{ term.heading }}
+  <div>
+    {{ heading }}
   </div>
   <br/>
 </template>
 
 <script>
-import term from '../assets/term.json';
 export default {
   name: "TermHeading",
-  data: () => ({
-    terms: term,
-  }),
+  props: {
+    heading: {
+      type: String,
+      required: true
+    }
+  }
 }
 </script>
 
