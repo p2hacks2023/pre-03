@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="fontSize">
+    あいうえお
     {{ heading }}
   </div>
   <br/>
