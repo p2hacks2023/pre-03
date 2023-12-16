@@ -1,7 +1,7 @@
 <template>
     <div>
         ひんやりあるばむ
-        <TermHeading/>
+        <TermIndentText/>
     </div>
 </template>
 

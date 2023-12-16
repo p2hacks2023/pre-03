@@ -1,15 +1,14 @@
 <template>
-  <div>
-    {{ heading }}
+  <div class="margin">
+    {{ indentText }}
   </div>
-  <br/>
 </template>
 
 <script>
 export default {
-  name: "TermHeading",
+  name: "TermIndentText",
   props: {
-    heading: {
+    indentText: {
       type: String,
       required: true
     }
