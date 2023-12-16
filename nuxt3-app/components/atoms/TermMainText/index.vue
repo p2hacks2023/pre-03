@@ -3,7 +3,6 @@
     <slot/>
     {{ mainText }}
   </div>
-  <br/>
 </template>
 
 <script>

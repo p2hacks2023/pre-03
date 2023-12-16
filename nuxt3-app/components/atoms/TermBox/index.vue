@@ -1,7 +1,8 @@
 <template>
   <div class="box">
-    <slot />
+    
     <div class="margin_whole">
+      <slot />
     </div>
   </div>
 </template>
