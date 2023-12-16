@@ -9,10 +9,8 @@
             </div>
         </div>
         <div v-if="isHinnyariPopUpBox" id="HinnyariPopUpBox">
-            <HinnyariPopUp id="HinnyariPopUp" @clickClose="viewClose" :name="selectSpotName"
-                :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F' + selectImgPath + '?alt=media'"
-                :evaluation-sum-value="selectEvaluationValue" :evaluation-count="selectEvaluationCount"
-                :mapUrl="'https://www.google.com/maps/search/?api=1&query='+selectMapUrl" />
+            <HinnyariPopUp id="HinnyariPopUp" @clickClose="viewClose" :name="selectSpotName" :imgPath="'https://firebasestorage.googleapis.com/v0/b/hinnyari-album.appspot.com/o/hinnyaris%2F'+selectImgPath+'?alt=media'"
+                :evaluation-sum-value="selectEvaluationValue" :evaluation-count="selectEvaluationCount" :mapUrl="selectMapUrl" />
         </div>
         <div v-if="isSelectMap" id="SelectMap">
             <AppPagePostPopUp @clickClose="postPopUpClose" @clickOk="inputSpot" />
@@ -33,7 +31,7 @@
 
 <script>
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, doc } from "firebase/firestore";
+import { getFirestore, collection, getDocs, doc, onSnapshot } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -42,6 +40,7 @@ export default {
     data: () => {
         return {
             hinnyaris: [],
+            unsubscribe: undefined,
             auth: undefined,
             db: undefined,
             storage: undefined,
@@ -80,7 +79,7 @@ export default {
         this.db = getFirestore(app);
         // Initialize Cloud Firestore and get a reference to the service
         this.storage = getStorage(app);
-        console.log("sucess: " + this.storage);
+        console.log("sucess: "+this.storage);
         this.getDatas();
         // Initialize Firebase Authentication and get a reference to the service
         this.auth = getAuth(app);
@@ -96,8 +95,18 @@ export default {
                 // ...
             }
         });
+        this.listenHinnyari();
     },
-    methods: {
+    methods:
+    {
+        listenHinnyari: function () {
+            this.unsubscribe = onSnapshot(collection(this.db, "hinnyaris"), (querySnapshot) => {
+                this.hinnyaris = [];
+                querySnapshot.forEach((doc) => {
+                    this.hinnyaris.push(doc.data());
+                });
+            });
+        },
         evaluateHinnyari: async function () {
             const washingtonRef = doc(this.db, "hinnyaris", "");
 
