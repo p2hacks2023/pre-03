@@ -1,16 +1,16 @@
 <!-- atoms -->
 <template>
-  <div class="heading">
-    {{ heading }}
+  <div class="indent">
+    {{ indent }}
   </div>
-  <br/>
+  <br>
 </template>
 
 <script>
 export default {
-  name: "TermHeading",
+  name: "TermIndent",
   props: {
-    heading: {
+    indent: {
       type: String,
       required: true
     }

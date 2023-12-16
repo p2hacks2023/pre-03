@@ -1,16 +1,15 @@
-<!-- atoms -->
 <template>
-  <div class="heading">
-    {{ heading }}
+  <div class="text">
+    {{ text }}
   </div>
-  <br/>
+  <br>
 </template>
 
 <script>
 export default {
-  name: "TermHeading",
+  name: "TermMainText",
   props: {
-    heading: {
+    text: {
       type: String,
       required: true
     }
