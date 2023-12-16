@@ -1,9 +1,7 @@
-<!-- atoms -->
 <template>
   <div class="indent">
     {{ indent }}
   </div>
-  <br>
 </template>
 
 <script>

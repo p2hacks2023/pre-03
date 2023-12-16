@@ -9,9 +9,12 @@ export default {
   name: "TermIndentText",
   props: {
     indentText: {
-      type: String,
+      type: Array,
       required: true
     }
+  },
+  mounted() {
+    console.log(this.indentText);
   }
 }
 </script>
