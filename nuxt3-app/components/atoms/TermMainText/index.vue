@@ -9,7 +9,7 @@
 export default {
   name: "TermMainText",
   props: {
-    heading: {
+    mainText: {
       type: String,
       required: true
     }
