@@ -13,7 +13,8 @@ export default defineNuxtConfig({
         // <meta name="description" content="My amazing site.">
         {
           name: "description",
-          content: "ひんやりを集めて共通するウェブアプリです。",
+          content: "函館中のひんやりを集めて共有するウェブアプリです。\n\
+          たくさん投稿してしろくまさんのランクを上げましょう！",
         },
       ],
       link: [
@@ -24,7 +25,8 @@ export default defineNuxtConfig({
         {
           rel: "icon",
           type: "image/x-icon",
-          href: "/favicon.ico",
+          // href: "/favicon.ico",
+          href: "/icon.png",
         },
       ],
       script: [
